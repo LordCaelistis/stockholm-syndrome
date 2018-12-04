@@ -6,6 +6,7 @@ public class Input_Move : MonoBehaviour {
 
 
     // GameSystem Déplacement Joueur:
+    [SerializeField] Rigidbody2D rigidbody2D;
 
     // GameObject:
     Rigidbody2D rigid;
@@ -14,12 +15,6 @@ public class Input_Move : MonoBehaviour {
     // Valeurs:
     float vitesse = 3.5f;
     bool platform;
-
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        platform = true;
-    }
    
     // Use this for initialization
     void Start () {
@@ -38,15 +33,6 @@ public class Input_Move : MonoBehaviour {
 
         // Saut:
         rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x, -vitesse, vitesse), rigid.velocity.y);
-
-        if (platform == true)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                platform = false;
-                rigid.velocity += new Vector2(0, 10);
-            }
-        }
     }
 
     // Orientation:

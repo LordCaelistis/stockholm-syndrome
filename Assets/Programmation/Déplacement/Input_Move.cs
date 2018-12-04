@@ -28,14 +28,12 @@ public class Input_Move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        print(onPlatform);
         if (cooldown_now <= 0)
         {
             if(Input.GetButtonDown("Jump"))
             {
                 if (againstWall == true)
                 {
-                    print("COUCOU");
                     cooldown_now_airmove += cooldown_max_airmove;
                     player.velocity += new Vector2(-(Input.GetAxis("Horizontal")) * 40, 8f);
                 }

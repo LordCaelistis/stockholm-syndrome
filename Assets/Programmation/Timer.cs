@@ -36,7 +36,7 @@ public class Timer : MonoBehaviour {
 
         scoreP1 += P1HasPrince ? Time.deltaTime : 0;
         scoreP2 += P2HasPrince ? Time.deltaTime : 0;
-        print("P1 : " + scoreP1 + " | P2 : " + scoreP2);
+        //print("P1 : " + scoreP1 + " | P2 : " + scoreP2);
 
         // Affichage texte :
         if (textZone != null){

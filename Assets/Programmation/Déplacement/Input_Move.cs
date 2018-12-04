@@ -6,44 +6,76 @@ public class Input_Move : MonoBehaviour {
 
 
     // GameSystem Déplacement Joueur:
-    [SerializeField] Rigidbody2D rigidbody2D;
 
     // GameObject:
-    Rigidbody2D rigid;
-    SpriteRenderer sprite;
+    public Rigidbody2D player;
+    public SpriteRenderer sprite;
 
     // Valeurs:
     float vitesse = 3.5f;
-    bool platform;
-   
+    public static bool onPlatform = true;
+    public static bool againstWall = false;
+
+    // Cooldown exemple
+    float cooldown_max = 0.2f;
+    float cooldown_now = 0f;
+    float cooldown_max_airmove = 0.05f;
+    float cooldown_now_airmove = 0f;
+
     // Use this for initialization
     void Start () {
-        rigid = GetComponent<Rigidbody2D>();
-        sprite = GetComponent<SpriteRenderer>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+        print(onPlatform);
+        if (cooldown_now <= 0)
+        {
+            if(Input.GetButtonDown("Jump"))
+            {
+                if (againstWall == true)
+                {
+                    print("COUCOU");
+                    cooldown_now_airmove += cooldown_max_airmove;
+                    player.velocity += new Vector2(-(Input.GetAxis("Horizontal")) * 40, 8f);
+                }
+                if (onPlatform == true)
+                {
+                    player.velocity += new Vector2(0, 10);
+                    onPlatform = false;
+                }
+                cooldown_now += cooldown_max;
+            }
+        }
+        else
+        {
+            cooldown_now -= Time.deltaTime;
+        }
+
+        if(cooldown_now_airmove > 0)
+        {
+            cooldown_now_airmove -= Time.deltaTime;
+        }
+        if (cooldown_now_airmove < 0) cooldown_now_airmove = 0;
         
         // Déplacement:
-        rigid.velocity += new Vector2(Input.GetAxis("Horizontal"), 0);
+        if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("Horizontal"), 0);
 
         // Orientation:
         UpdateFlip();
 
         // Saut:
-        rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x, -vitesse, vitesse), rigid.velocity.y);
+        player.velocity = new Vector2(Mathf.Clamp(player.velocity.x, -vitesse, vitesse), player.velocity.y);
     }
 
     // Orientation:
     void UpdateFlip()
     {
-        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
-        if (rigid.velocity.x > 0)
+        if (player.velocity.x > 0)
         {
             sprite.flipX = false;
         }
-        else if (rigid.velocity.x < 0)
+        else if (player.velocity.x < 0)
         {
             sprite.flipX = true;
         }

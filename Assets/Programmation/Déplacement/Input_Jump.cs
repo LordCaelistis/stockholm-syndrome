@@ -15,18 +15,23 @@ public class Input_Jump : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (onPlatform == true)
+        /*if (onPlatform == true)
         {
             if (Input.GetButtonDown("Jump"))
             {
                 onPlatform = false;
                 rigid.velocity += new Vector2(0, 10);
             }
-        }
+        }*/
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        onPlatform = true;
+        Input_Move.onPlatform = true;
+    }
+
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        Input_Move.onPlatform = false;
     }
 }

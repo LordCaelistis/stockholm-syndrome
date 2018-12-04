@@ -25,20 +25,21 @@ public class Timer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("&")) {
+        if (Input.GetButtonDown("Fire1")) {
             P2HasPrince = false;
             P1HasPrince = !P1HasPrince;
         }
-        if (Input.GetKeyDown("é")) {
+        if (Input.GetButtonDown("Fire2")) {
             P1HasPrince = false;
             P2HasPrince = !P2HasPrince;
         }
 
         scoreP1 += P1HasPrince ? Time.deltaTime : 0;
         scoreP2 += P2HasPrince ? Time.deltaTime : 0;
+        print("P1 : " + scoreP1 + " | P2 : " + scoreP2);
 
         // Affichage texte :
-        if(textZone != null){
+        if (textZone != null){
             textZone.text = "P1 : "+scoreP1+" | P2 : "+scoreP2;
         }
     }

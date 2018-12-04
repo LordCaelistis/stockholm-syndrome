@@ -5,12 +5,10 @@ using UnityEngine;
 public class Input_Jump : MonoBehaviour {
     
     public GameObject personnage;
-    Rigidbody2D rigid;
     bool onPlatform;
 
 	// Use this for initialization
 	void Start () {
-        rigid = personnage.GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame

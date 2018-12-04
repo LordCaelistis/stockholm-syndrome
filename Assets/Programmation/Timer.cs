@@ -10,6 +10,7 @@ public class Timer : MonoBehaviour {
 
     public GameObject player1;
     public GameObject player2;
+    public static string hasPrince = null;
     public static bool P1HasPrince = false;
     public static bool P2HasPrince = false;
     public GameObject PrincePrefab;
@@ -35,14 +36,15 @@ public class Timer : MonoBehaviour {
         if (Input.GetButtonDown("Fire2")) {
             print(P2HasPrince + "Fire2");
         }
-        //Fait spawn un prince fonctionnel on-hit
-        if (Input.GetKeyDown("t"))
+        //Quand le Player1 se prend un gnon
+        if (Input.GetKeyDown("t") && P1HasPrince)
         {
             Vector3 pos0 = player1.transform.position;
             Quaternion rot0 = Quaternion.identity;
             GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
             princeRigid = prince0.GetComponent<Rigidbody2D>();
             princeRigid.velocity += new Vector2(0, 8);
+            P1HasPrince = !P1HasPrince;
         }
 
         scoreP1 += P1HasPrince ? Time.deltaTime : 0;

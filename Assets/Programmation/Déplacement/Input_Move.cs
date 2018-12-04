@@ -12,7 +12,7 @@ public class Input_Move : MonoBehaviour {
     SpriteRenderer sprite;
 
     // Valeurs:
-    float vitesse = 3f;
+    float vitesse = 3.5f;
     bool platform;
 
 
@@ -44,7 +44,7 @@ public class Input_Move : MonoBehaviour {
             if (Input.GetButtonDown("Jump"))
             {
                 platform = false;
-                rigid.velocity += new Vector2(0, 6);
+                rigid.velocity += new Vector2(0, 10);
             }
         }
     }

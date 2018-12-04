@@ -13,7 +13,6 @@ public class Input_Walljump : MonoBehaviour
     void Start()
     {
         rigid = personnage.GetComponent<Rigidbody2D>();
-        sprite = personnage.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

@@ -5,12 +5,10 @@ using UnityEngine;
 public class Input_Jump : MonoBehaviour {
     
     public GameObject personnage;
-    Rigidbody2D rigid;
     bool onPlatform;
 
 	// Use this for initialization
 	void Start () {
-        rigid = personnage.GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
@@ -27,11 +25,11 @@ public class Input_Jump : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.tag != "prince") Input_Move.onPlatform = true;
+        if (coll.tag != "prince") KnightController.onPlatform = true;
     }
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.tag != "prince") Input_Move.onPlatform = false;
+        if (coll.tag != "prince") KnightController.onPlatform = false;
     }
 }

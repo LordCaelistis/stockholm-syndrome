@@ -25,6 +25,7 @@ public class PrinceBehavior : MonoBehaviour {
     {
         if (cooldown_now <= 0)
         {
+            Timer.hasPrince = coll.name;
             if (coll.name == "Player1")
             {
                 print(coll.name);

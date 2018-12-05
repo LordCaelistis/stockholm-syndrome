@@ -12,10 +12,14 @@ public class KnightController : MonoBehaviour {
 
     // GameObject:
     public Rigidbody2D player;
+    public GameObject PrincePrefab;
+    public Rigidbody2D princeRigid;
     public SpriteRenderer sprite;
 
     // Valeurs:
     float vitesse = 3.5f;
+    float directionRaycast;
+    float positionStartRaycastX;
     public bool[] onPlatform;
     public bool[] againstWall;
 
@@ -70,7 +74,7 @@ public class KnightController : MonoBehaviour {
 
         //Si le coup de massue est pas en cooldown, on FRAPPE
         if (cooldown_now_massue <= 0) {
-            if (Input.GetButtonDown("TriggersR_"+controllerNumber)) {
+            if (Input.GetButtonDown("X_"+controllerNumber)) {
                 MassueStrike();
                 cooldown_now_massue += cooldown_max_massue;
             }
@@ -95,17 +99,39 @@ public class KnightController : MonoBehaviour {
     {
         //animator.SetInteger("attack", 2);
         //Invoke("ResetAttack", 0.2f);
-        float directionRaycast = 1;
-        //LayerMask mask = LayerMask.GetMask("BreakableObject");
-        float positionStartRaycastX = (player.transform.position.x) + 0.2f;
+        LayerMask mask = LayerMask.GetMask("Default");
         Vector3 raycastStart = new Vector3(positionStartRaycastX, player.transform.position.y, player.transform.position.z);
         Vector3 drawLineEnd = new Vector3(positionStartRaycastX + 0.5f, player.transform.position.y, player.transform.position.z);
-        RaycastHit2D pointContact2d = Physics2D.Raycast(raycastStart, new Vector2(directionRaycast, 0), 0.5f/*, mask*/);
-        if (pointContact2d.collider)
+        RaycastHit2D pointContact2d = Physics2D.Raycast(raycastStart, new Vector2(directionRaycast, 0), 0.5f, mask);
+        if (pointContact2d.collider && pointContact2d.collider.tag == "Player")
         {
             //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
-            print(pointContact2d.collider.gameObject);
+            print(pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
+            if(Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] == true)
+            {
+                print("Il avait la princesse !");
+                Vector3 pos0 = pointContact2d.collider.transform.position;
+                Quaternion rot0 = Quaternion.identity;
+                GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
+                princeRigid = prince0.GetComponent<Rigidbody2D>();
+                princeRigid.velocity += new Vector2(0, 8);
+                Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] = false;
+            }
         }
+        /*if (pointContact2d.collider && pointContact2d.collider.tag == "PlayerRelated")
+        {
+            //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
+            print(pointContact2d.collider.ParentGameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
+        }*/
+        /*if (Input.GetKeyDown("t") && P1HasPrince)
+        {
+            Vector3 pos0 = player1.transform.position;
+            Quaternion rot0 = Quaternion.identity;
+            GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
+            princeRigid = prince0.GetComponent<Rigidbody2D>();
+            princeRigid.velocity += new Vector2(0, 8);
+            P1HasPrince = !P1HasPrince;
+        }*/
     }
 
     // Orientation:
@@ -114,10 +140,19 @@ public class KnightController : MonoBehaviour {
         if (player.velocity.x > 0)
         {
             sprite.flipX = false;
+            directionRaycast = 1;
+            positionStartRaycastX = (player.transform.position.x) + 0.2f;
         }
         else if (player.velocity.x < 0)
         {
             sprite.flipX = true;
+            directionRaycast = -1;
+            positionStartRaycastX = (player.transform.position.x) - 0.2f;
         }
+        else
+        {
+            directionRaycast = directionRaycast;
+        }
+        //print(directionRaycast);
     }
 }

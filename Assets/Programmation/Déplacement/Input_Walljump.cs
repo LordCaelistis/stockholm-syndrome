@@ -36,11 +36,11 @@ public class Input_Walljump : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.tag != "prince") Input_Move.againstWall = true;
+        if(coll.tag != "prince") KnightController.againstWall = true;
     }
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.tag != "prince") Input_Move.againstWall = false;
+        if (coll.tag != "prince") KnightController.againstWall = false;
     }
 }

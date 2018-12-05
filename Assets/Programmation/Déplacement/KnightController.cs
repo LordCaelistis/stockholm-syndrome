@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Input_Move : MonoBehaviour {
+public class KnightController : MonoBehaviour {
 
 
     // GameSystem Déplacement Joueur:

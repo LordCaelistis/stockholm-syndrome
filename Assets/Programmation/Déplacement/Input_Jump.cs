@@ -25,11 +25,11 @@ public class Input_Jump : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.tag != "prince") Input_Move.onPlatform = true;
+        if (coll.tag != "prince") KnightController.onPlatform = true;
     }
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.tag != "prince") Input_Move.onPlatform = false;
+        if (coll.tag != "prince") KnightController.onPlatform = false;
     }
 }

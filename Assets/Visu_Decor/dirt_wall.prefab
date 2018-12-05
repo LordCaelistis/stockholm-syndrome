@@ -8,19 +8,19 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1773863782081540}
-  m_IsPrefabAsset: 1
---- !u!1 &1773863782081540
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1530578493445202}
+  m_IsPrefabParent: 1
+--- !u!1 &1530578493445202
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
+  serializedVersion: 5
   m_Component:
-  - component: {fileID: 4542261518951792}
-  - component: {fileID: 212668106490959808}
-  - component: {fileID: 61222570739834558}
+  - component: {fileID: 4175045812820876}
+  - component: {fileID: 212217885183968266}
+  - component: {fileID: 61459335766147098}
   m_Layer: 0
   m_Name: dirt_wall
   m_TagString: Untagged
@@ -28,25 +28,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4542261518951792
+--- !u!4 &4175045812820876
 Transform:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773863782081540}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.600439, y: 1.0301406, z: 0}
+  m_GameObject: {fileID: 1530578493445202}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3198535, y: 2.05, z: -0.40685454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61222570739834558
+--- !u!61 &61459335766147098
 BoxCollider2D:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773863782081540}
+  m_GameObject: {fileID: 1530578493445202}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -66,12 +66,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!212 &212668106490959808
+--- !u!212 &212217885183968266
 SpriteRenderer:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773863782081540}
+  m_GameObject: {fileID: 1530578493445202}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -111,4 +111,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0

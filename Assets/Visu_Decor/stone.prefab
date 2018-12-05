@@ -8,19 +8,19 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1522964701962540}
-  m_IsPrefabAsset: 1
---- !u!1 &1522964701962540
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1086855798389448}
+  m_IsPrefabParent: 1
+--- !u!1 &1086855798389448
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
+  serializedVersion: 5
   m_Component:
-  - component: {fileID: 4336499061019558}
-  - component: {fileID: 212709415644622602}
-  - component: {fileID: 61004112318328968}
+  - component: {fileID: 4367017074256146}
+  - component: {fileID: 212086472361402184}
+  - component: {fileID: 61635768482551816}
   m_Layer: 0
   m_Name: stone
   m_TagString: Untagged
@@ -28,25 +28,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4336499061019558
+--- !u!4 &4367017074256146
 Transform:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522964701962540}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.35, z: 0}
+  m_GameObject: {fileID: 1086855798389448}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.33, y: 1.96, z: -0.40685454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61004112318328968
+--- !u!61 &61635768482551816
 BoxCollider2D:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522964701962540}
+  m_GameObject: {fileID: 1086855798389448}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -66,12 +66,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!212 &212709415644622602
+--- !u!212 &212086472361402184
 SpriteRenderer:
   m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1522964701962540}
+  m_GameObject: {fileID: 1086855798389448}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -111,4 +111,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0

@@ -30,10 +30,10 @@ public class Timer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetKeyDown("e")) {
             print(P1HasPrince + "Fire1");
         }
-        if (Input.GetButtonDown("Fire2")) {
+        if (Input.GetKeyDown("r")) {
             print(P2HasPrince + "Fire2");
         }
         //Quand le Player1 se prend un gnon
@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour {
 
         scoreP1 += P1HasPrince ? Time.deltaTime : 0;
         scoreP2 += P2HasPrince ? Time.deltaTime : 0;
-        print("P1 : " + scoreP1 + " | P2 : " + scoreP2);
+        //print("P1 : " + scoreP1 + " | P2 : " + scoreP2);
 
         // Affichage texte :
         if (textZone != null){

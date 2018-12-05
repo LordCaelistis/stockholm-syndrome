@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Input_Walljump : MonoBehaviour
 {
-
+    //GameSystems Controllers
+    [SerializeField]
+    public int controllerNumber = 1;
+    public KnightController scriptMouvement;
     public GameObject personnage;
     Rigidbody2D rigid;
     bool againstWall;
@@ -13,6 +16,7 @@ public class Input_Walljump : MonoBehaviour
     void Start()
     {
         rigid = personnage.GetComponent<Rigidbody2D>();
+        controllerNumber = scriptMouvement.getSetControllerNumber;
     }
 
     // Update is called once per frame
@@ -23,7 +27,7 @@ public class Input_Walljump : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 againstWall = false;
-                rigid.velocity += new Vector2(-(Input.GetAxis("Horizontal"))*40, 8f);
+                rigid.velocity += new Vector2(-(Input.GetAxis("L_XAxis_" + controllerNumber))*40, 8f);
                 Invoke("WallJump", 0.01f);
             }
         }*/
@@ -31,16 +35,16 @@ public class Input_Walljump : MonoBehaviour
 
     void WallJump()
     {
-        rigid.velocity += new Vector2(-(Input.GetAxis("Horizontal")) * 40, 0);
+        rigid.velocity += new Vector2(-(Input.GetAxis("L_XAxis_" + controllerNumber)) * 40, 0);
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.tag != "prince") KnightController.againstWall = true;
+        if(coll.tag != "prince") scriptMouvement.againstWall[controllerNumber] = true;
     }
 
     void OnTriggerExit2D(Collider2D coll)
     {
-        if (coll.tag != "prince") KnightController.againstWall = false;
+        if (coll.tag != "prince") scriptMouvement.againstWall[controllerNumber] = false;
     }
 }

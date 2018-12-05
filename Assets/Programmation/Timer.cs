@@ -14,7 +14,12 @@ public class Timer : MonoBehaviour {
     public static bool P1HasPrince = false;
     public static bool P2HasPrince = false;
     public GameObject PrincePrefab;
+    public static Dictionary<int, bool> playerArray = new Dictionary<int, bool>();
+    public float[] playerScore;
+    int playerArrayCount = 1;
     Rigidbody2D princeRigid;
+
+    private int tempControllerNumber;
 
     // Zones text :
     [SerializeField]
@@ -26,15 +31,23 @@ public class Timer : MonoBehaviour {
         if(textObject != null){
             textZone = textObject.GetComponent<Text>();
         }
+        playerScore = new float[GameObject.FindGameObjectsWithTag("Player").Length];
+        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            tempControllerNumber = gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber;
+            playerArray.Add(tempControllerNumber, false);
+            playerScore[tempControllerNumber-1] = 0;
+        }
+        print(playerArray);
     }
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("e")) {
-            print(P1HasPrince + "Fire1");
+        /*if (Input.GetKeyDown("e")) {
+            print(playerArray[1] + "Fire1");
         }
         if (Input.GetKeyDown("r")) {
-            print(P2HasPrince + "Fire2");
+            print(playerArray[2] + "Fire2");
         }
         //Quand le Player1 se prend un gnon
         if (Input.GetKeyDown("t") && P1HasPrince)
@@ -45,15 +58,23 @@ public class Timer : MonoBehaviour {
             princeRigid = prince0.GetComponent<Rigidbody2D>();
             princeRigid.velocity += new Vector2(0, 8);
             P1HasPrince = !P1HasPrince;
-        }
+        }*/
 
-        scoreP1 += P1HasPrince ? Time.deltaTime : 0;
-        scoreP2 += P2HasPrince ? Time.deltaTime : 0;
-        //print("P1 : " + scoreP1 + " | P2 : " + scoreP2);
+        
+        foreach (KeyValuePair<int, bool> item in playerArray)
+        {
+            if (item.Value == true) playerScore[(item.Key) - 1] += Time.deltaTime;
+            //print("Key: {0}, Value: {1}" + item.Key + "" + item.Value);
+        }
+        //print(playerArray.Count);
+
+        /*scoreP1 += P1HasPrince ? Time.deltaTime : 0;
+        scoreP2 += P2HasPrince ? Time.deltaTime : 0;*/
+        //print("P1 : " + playerScore[0] + " | P2 : " + playerScore[1]);
 
         // Affichage texte :
         if (textZone != null){
-            textZone.text = "P1 : "+scoreP1+" | P2 : "+scoreP2;
+            textZone.text = "P1 : " + playerScore[0] + " | P2 : " + playerScore[1];
         }
     }
 }

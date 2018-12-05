@@ -5,6 +5,7 @@ using UnityEngine;
 public class PrinceBehavior : MonoBehaviour {
 
     public GameObject PrincePrefab;
+    private int tempControllerNumber;
 
     float cooldown_max = 1f;
     float cooldown_now = 0f;
@@ -26,20 +27,20 @@ public class PrinceBehavior : MonoBehaviour {
         if (cooldown_now <= 0)
         {
             Timer.hasPrince = coll.name;
-            if (coll.name == "Player1")
+            if (coll.tag == "Player")
             {
-                print(coll.name);
-                Timer.P1HasPrince = true;
-                Timer.P2HasPrince = false;
+                print(coll.gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
+                tempControllerNumber = coll.gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber;
+                Timer.playerArray[tempControllerNumber] = true;
                 Destroy(gameObject);
             }
 
-            if (coll.name == "Player2")
+            /*if (coll.name == "Player2")
             {
                 Timer.P1HasPrince = false;
                 Timer.P2HasPrince = true;
                 Destroy(gameObject);
-            }
+            }*/
         }
     }
 }

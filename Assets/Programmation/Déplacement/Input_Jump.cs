@@ -9,6 +9,11 @@ public class Input_Jump : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+<<<<<<< Updated upstream
+=======
+        rigid = personnage.GetComponent<Rigidbody2D>();
+		
+>>>>>>> Stashed changes
     }
 	
 	// Update is called once per frame
@@ -17,6 +22,7 @@ public class Input_Jump : MonoBehaviour {
         {
             if (Input.GetButtonDown("Jump"))
             {
+				
                 onPlatform = false;
                 rigid.velocity += new Vector2(0, 10);
             }

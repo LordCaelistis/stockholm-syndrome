@@ -234,8 +234,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controllerNumber: 1
   player: {fileID: 50631235993706700}
-  PrincePrefab: {fileID: 0}
-  princeRigid: {fileID: 0}
+  PrincePrefab: {fileID: 1577558225718376, guid: 73765984b6f72d641a8ec01619cdea74,
+    type: 2}
+  princeRigid: {fileID: 50324674869909432, guid: 73765984b6f72d641a8ec01619cdea74,
+    type: 2}
   sprite: {fileID: 212105240192462684}
   onPlatform: 
   againstWall: 

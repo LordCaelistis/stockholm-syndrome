@@ -6,6 +6,8 @@ public class KnightController : MonoBehaviour {
 
 
     // GameSystem Déplacement Joueur:
+    [SerializeField]
+    public int controllerNumber = 1;
 
     // GameObject:
     public Rigidbody2D player;
@@ -25,17 +27,17 @@ public class KnightController : MonoBehaviour {
     // Use this for initialization
     void Start () {
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (cooldown_now <= 0)
         {
-            if(Input.GetButtonDown("Jump"))
+            if(Input.GetButtonDown("A_"+controllerNumber))
             {
                 if (againstWall == true)
                 {
                     cooldown_now_airmove += cooldown_max_airmove;
-                    player.velocity += new Vector2(-(Input.GetAxis("Horizontal")) * 40, 8f);
+                    player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
                 }
                 if (onPlatform == true)
                 {
@@ -55,9 +57,9 @@ public class KnightController : MonoBehaviour {
             cooldown_now_airmove -= Time.deltaTime;
         }
         if (cooldown_now_airmove < 0) cooldown_now_airmove = 0;
-        
+
         // Déplacement:
-        if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("Horizontal"), 0);
+        if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
 
         // Orientation:
         UpdateFlip();

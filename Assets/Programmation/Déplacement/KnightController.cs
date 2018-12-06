@@ -10,6 +10,12 @@ public class KnightController : MonoBehaviour {
     [SerializeField]
     public int controllerNumber = 1;
 
+    // Son
+    public AudioSource sourceSon;
+    public AudioClip sonSaut;
+    public AudioClip MassueVent;
+    public AudioClip MassueTouche;
+
     // GameObject:
     public Rigidbody2D player;
     public GameObject PrincePrefab;
@@ -58,6 +64,8 @@ public class KnightController : MonoBehaviour {
                     //Léger cooldown pour forcer le joueur a décoller du mur lors d'un walljump
                     cooldown_now_airmove += cooldown_max_airmove;
                     player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
+
+                    sourceSon.PlayOneShot(sonSaut, 0.3f);
                 }
                 //Saut depuis une plateforme
                 if (onPlatform[controllerNumber] == true)
@@ -65,6 +73,8 @@ public class KnightController : MonoBehaviour {
                     //print(getSetOnPlatform + "" + controllerNumber);
                     player.velocity += new Vector2(0, 10);
                     onPlatform[controllerNumber] = false;
+
+                    sourceSon.PlayOneShot(sonSaut, 0.2f);
                 }
                 cooldown_now += cooldown_max;
             }
@@ -77,6 +87,8 @@ public class KnightController : MonoBehaviour {
             if (Input.GetButtonDown("X_"+controllerNumber)) {
                 MassueStrike();
                 cooldown_now_massue += cooldown_max_massue;
+
+                sourceSon.PlayOneShot(MassueVent, 0.7f);
             }
         }        
         else cooldown_now_massue -= Time.deltaTime;
@@ -105,6 +117,9 @@ public class KnightController : MonoBehaviour {
         RaycastHit2D pointContact2d = Physics2D.Raycast(raycastStart, new Vector2(directionRaycast, 0), 0.5f, mask);
         if (pointContact2d.collider && pointContact2d.collider.tag == "Player")
         {
+
+            sourceSon.PlayOneShot(MassueTouche, 0.3f);
+
             //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
             print(pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
             if(Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] == true)

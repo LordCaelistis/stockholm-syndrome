@@ -28,17 +28,14 @@ public class KnightController : MonoBehaviour {
     float intervalTauntNow = 0f;
 
     public AudioClip MassueVent;
-    public AudioClip[] MassueTouche;
-    public AudioClip[] CriDeCoup;
-    public AudioClip[] CriTouche;
-
-    public AudioClip[] ClonkArmureMarche;
+    public AudioClip MassueTouche;
 
     // GameObject:
     public Rigidbody2D player;
     public GameObject PrincePrefab;
     public Rigidbody2D princeRigid;
     public SpriteRenderer sprite;
+    public GameObject collisionMassue;
 
     // Valeurs:
     float vitesse = 3.5f;
@@ -46,6 +43,7 @@ public class KnightController : MonoBehaviour {
     float positionStartRaycastX;
     public bool[] onPlatform;
     public bool[] againstWall;
+    public bool facingRight;
 
     // Cooldowns
     float cooldown_max = 0.2f;
@@ -69,24 +67,9 @@ public class KnightController : MonoBehaviour {
         againstWall = new bool[controllerNumber + 1];
         onPlatform[controllerNumber] = false;
     }
-
+	
 	// Update is called once per frame
 	void Update () {
-
-
-        if (Input.GetButtonDown("B_" + controllerNumber) && (intervalTauntNow <= 0))
-        {
-
-            SoundStuff.PlayRandomOneShot(sourceSon, sonTaunt, 0.4f);
-            intervalTauntNow += intervalTauntMax;
-        }
-        else
-        {
-            intervalTauntNow -= Time.deltaTime;
-        }
-        
-
-
         if (cooldown_now <= 0)
         {
             if(Input.GetButtonDown("A_"+controllerNumber))
@@ -98,7 +81,7 @@ public class KnightController : MonoBehaviour {
                     cooldown_now_airmove += cooldown_max_airmove;
                     player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
 
-                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.4f);
+                    sourceSon.PlayOneShot(sonSaut, 0.3f);
                 }
                 //Saut depuis une plateforme
                 if (onPlatform[controllerNumber] == true)
@@ -107,11 +90,11 @@ public class KnightController : MonoBehaviour {
                     player.velocity += new Vector2(0, 10);
                     onPlatform[controllerNumber] = false;
 
-                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.4f);
+                    sourceSon.PlayOneShot(sonSaut, 0.2f);
                 }
                 cooldown_now += cooldown_max;
             }
-
+            
         }
         else cooldown_now -= Time.deltaTime;
 
@@ -122,19 +105,16 @@ public class KnightController : MonoBehaviour {
                 cooldown_now_massue += cooldown_max_massue;
 
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
-                SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
-                SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.3f);
             }
-        }
+        }        
         else cooldown_now_massue -= Time.deltaTime;
 
         //Réduction du cooldown du mouvement aérien
         if (cooldown_now_airmove > 0)  cooldown_now_airmove -= Time.deltaTime;
         if(cooldown_now_airmove < 0) cooldown_now_airmove = 0;
-
+        
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
-        if (cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0) {
-            player.velocity += new Vector2(Input.GetAxis("L_XAxis_" + controllerNumber), 0);
+        if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
 
             if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
             {
@@ -175,7 +155,40 @@ public class KnightController : MonoBehaviour {
 
     void MassueStrike()
     {
-        //animator.SetInteger("attack", 2);
+        if (facingRight == true && collisionMassue.GetComponent<Input_Massue>().playersToRight.Count > 0)
+        {
+            sourceSon.PlayOneShot(MassueTouche, 0.3f);
+            for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToRight.Count; i++)
+            {
+                print(collisionMassue.GetComponent<Input_Massue>().playersToRight[i]);
+                //Si un des ennemis frappés possède la princesse...
+                if (Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] == true)
+                {
+                    foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
+                    {
+                        if(gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToRight[i])
+                        {
+                            Vector3 pos0 = gameObject.transform.position;
+                            Quaternion rot0 = Quaternion.identity;
+                            GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
+                            princeRigid = prince0.GetComponent<Rigidbody2D>();
+                            princeRigid.velocity += new Vector2(0, 8);
+                            Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] = false;
+                        }
+                    }                    
+                }
+            }
+        }
+
+        else if (facingRight == false && collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count > 0)
+        {
+            sourceSon.PlayOneShot(MassueTouche, 0.3f);
+            for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count; i++)
+            {
+                print(collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]);
+            }
+        }
+        /*animator.SetInteger("attack", 2);
         //Invoke("ResetAttack", 0.2f);
         LayerMask mask = LayerMask.GetMask("Default");
         Vector3 raycastStart = new Vector3(positionStartRaycastX, player.transform.position.y, player.transform.position.z);
@@ -183,13 +196,7 @@ public class KnightController : MonoBehaviour {
         RaycastHit2D pointContact2d = Physics2D.Raycast(raycastStart, new Vector2(directionRaycast, 0), 0.5f, mask);
         if (pointContact2d.collider && pointContact2d.collider.tag == "Player")
         {
-
-            
-            SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);           
-            SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.5f);
-            SoundStuff.PlayRandomOneShot(sourceSon, CriTouche, 0.5f);
-
-
+            sourceSon.PlayOneShot(MassueTouche, 0.3f);
             //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
             print(pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
             if(Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] == true)
@@ -202,15 +209,6 @@ public class KnightController : MonoBehaviour {
                 princeRigid.velocity += new Vector2(0, 8);
                 Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] = false;
             }
-        }
-        /*if (Input.GetKeyDown("t") && P1HasPrince)
-        {
-            Vector3 pos0 = player1.transform.position;
-            Quaternion rot0 = Quaternion.identity;
-            GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
-            princeRigid = prince0.GetComponent<Rigidbody2D>();
-            princeRigid.velocity += new Vector2(0, 8);
-            P1HasPrince = !P1HasPrince;
         }*/
     }
 
@@ -221,13 +219,16 @@ public class KnightController : MonoBehaviour {
         {
             sprite.flipX = false;
             directionRaycast = 1;
-            positionStartRaycastX = (player.transform.position.x) + 0.2f;
+            positionStartRaycastX = player.transform.position.x + (sprite.size.x)/2;
+            facingRight = true;
+            //collisionMassue.GetComponent<Input_Massue>.playersHit.Clear();
         }
         else if (player.velocity.x < -0.01)
         {
             sprite.flipX = true;
             directionRaycast = -1;
             positionStartRaycastX = (player.transform.position.x) - 0.2f;
+            facingRight = false;
         }
     }
 }

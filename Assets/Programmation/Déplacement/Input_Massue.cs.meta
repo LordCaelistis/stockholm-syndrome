@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 58dc58318eefc184c8135854cc2019fe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scriptMouvement: {instanceID: 0}
+  - personnage: {instanceID: 0}
+  - gameMaster: {fileID: 114605233318839608, guid: aa1fd41ec1734f344acfcb14bb61e671,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

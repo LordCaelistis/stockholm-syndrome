@@ -196,10 +196,10 @@ public class KnightController : MonoBehaviour {
                     {
                         if(gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToRight[i])
                         {
+                            PrincePrefab.AddComponent<Rigidbody2D>();
                             Vector3 pos0 = gameObject.transform.position;
                             Quaternion rot0 = Quaternion.identity;
-                            GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
-                            princeRigid = prince0.GetComponent<Rigidbody2D>();
+                            princeRigid = PrincePrefab.GetComponent<Rigidbody2D>();
                             princeRigid.velocity += new Vector2(0, 8);
                             Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] = false;
                         }
@@ -214,6 +214,23 @@ public class KnightController : MonoBehaviour {
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count; i++)
             {
                 print(collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]);
+                //Si un des ennemis frappés possède la princesse...
+                if (Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] == true)
+                {
+                    foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
+                    {
+                        if (gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToLeft[i])
+                        {
+                            PrincePrefab.AddComponent<Rigidbody2D>();
+                            Vector3 pos0 = gameObject.transform.position;
+                            Quaternion rot0 = Quaternion.identity;
+                            princeRigid = PrincePrefab.GetComponent<Rigidbody2D>();
+                            princeRigid.velocity += new Vector2(0, 8);
+                            Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] = false;
+                            PrincePrefab.GetComponent<BoxCollider2D>().enabled = true;
+                        }
+                    }
+                }
             }
         }
         /*animator.SetInteger("attack", 2);

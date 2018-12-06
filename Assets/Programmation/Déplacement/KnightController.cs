@@ -116,7 +116,7 @@ public class KnightController : MonoBehaviour {
         //Invoke("ResetAttack", 0.2f);
         LayerMask mask = LayerMask.GetMask("Default");
         Vector3 raycastStart = new Vector3(positionStartRaycastX, player.transform.position.y, player.transform.position.z);
-        Vector3 drawLineEnd = new Vector3(positionStartRaycastX + 0.5f, player.transform.position.y, player.transform.position.z);
+        //Vector3 drawLineEnd = new Vector3(positionStartRaycastX + 0.5f, player.transform.position.y, player.transform.position.z);
         RaycastHit2D pointContact2d = Physics2D.Raycast(raycastStart, new Vector2(directionRaycast, 0), 0.5f, mask);
         if (pointContact2d.collider && pointContact2d.collider.tag == "Player")
         {
@@ -139,11 +139,6 @@ public class KnightController : MonoBehaviour {
                 Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] = false;
             }
         }
-        /*if (pointContact2d.collider && pointContact2d.collider.tag == "PlayerRelated")
-        {
-            //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
-            print(pointContact2d.collider.ParentGameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
-        }*/
         /*if (Input.GetKeyDown("t") && P1HasPrince)
         {
             Vector3 pos0 = player1.transform.position;
@@ -158,22 +153,17 @@ public class KnightController : MonoBehaviour {
     // Orientation:
     void UpdateFlip()
     {
-        if (player.velocity.x > 0)
+        if (player.velocity.x > 0.01)
         {
             sprite.flipX = false;
             directionRaycast = 1;
             positionStartRaycastX = (player.transform.position.x) + 0.2f;
         }
-        else if (player.velocity.x < 0)
+        else if (player.velocity.x < -0.01)
         {
             sprite.flipX = true;
             directionRaycast = -1;
             positionStartRaycastX = (player.transform.position.x) - 0.2f;
         }
-        else
-        {
-            directionRaycast = directionRaycast;
-        }
-        //print(directionRaycast);
     }
 }

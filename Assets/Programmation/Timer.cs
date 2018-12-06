@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
-    // Scores :
-    float scoreP1 = 0;
-    float scoreP2 = 0;
 
     public GameObject player1;
     public GameObject player2;
@@ -16,7 +13,8 @@ public class Timer : MonoBehaviour {
     public GameObject PrincePrefab;
     public static Dictionary<int, bool> playerArray = new Dictionary<int, bool>();
     public float[] playerScore;
-    int playerArrayCount = 1;
+    public bool gameOver = false;
+    private int winningPlayer;
     Rigidbody2D princeRigid;
 
     private int tempControllerNumber;
@@ -64,6 +62,12 @@ public class Timer : MonoBehaviour {
         foreach (KeyValuePair<int, bool> item in playerArray)
         {
             if (item.Value == true) playerScore[(item.Key) - 1] += Time.deltaTime;
+            print(playerScore[(item.Key) - 1]);
+            if (playerScore[(item.Key) - 1] >= 3)
+            {
+                winningPlayer = item.Key;
+                gameOver = true;
+            }
             //print("Key: {0}, Value: {1}" + item.Key + "" + item.Value);
         }
         //print(playerArray.Count);
@@ -73,8 +77,11 @@ public class Timer : MonoBehaviour {
         //print("P1 : " + playerScore[0] + " | P2 : " + playerScore[1]);
 
         // Affichage texte :
-        if (textZone != null){
+        if (textZone != null && gameOver == false){
             textZone.text = "P1 : " + playerScore[0] + " | P2 : " + playerScore[1];
+        } else if (textZone != null && gameOver == true)
+        {
+            textZone.text = "Player" + winningPlayer + " wins!";
         }
     }
 }

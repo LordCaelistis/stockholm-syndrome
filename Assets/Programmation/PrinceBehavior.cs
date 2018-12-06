@@ -7,7 +7,7 @@ public class PrinceBehavior : MonoBehaviour {
     public GameObject PrincePrefab;
     private int tempControllerNumber;
 
-    float cooldown_max = 1f;
+    float cooldown_max = 0.1f;
     float cooldown_now = 0f;
 
     // Use this for initialization
@@ -34,13 +34,6 @@ public class PrinceBehavior : MonoBehaviour {
                 Timer.playerArray[tempControllerNumber] = true;
                 Destroy(gameObject);
             }
-
-            /*if (coll.name == "Player2")
-            {
-                Timer.P1HasPrince = false;
-                Timer.P2HasPrince = true;
-                Destroy(gameObject);
-            }*/
         }
     }
 }

@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour {
     public GameObject PrincePrefab;
     public static Dictionary<int, bool> playerArray = new Dictionary<int, bool>();
     public float[] playerScore;
+    public float winningScore = 3f;
     public bool gameOver = false;
     private int winningPlayer;
     Rigidbody2D princeRigid;
@@ -58,12 +59,12 @@ public class Timer : MonoBehaviour {
             P1HasPrince = !P1HasPrince;
         }*/
 
-        
+
         foreach (KeyValuePair<int, bool> item in playerArray)
         {
             if (item.Value == true) playerScore[(item.Key) - 1] += Time.deltaTime;
             print(playerScore[(item.Key) - 1]);
-            if (playerScore[(item.Key) - 1] >= 3)
+            if (playerScore[(item.Key) - 1] >= winningScore)
             {
                 winningPlayer = item.Key;
                 gameOver = true;

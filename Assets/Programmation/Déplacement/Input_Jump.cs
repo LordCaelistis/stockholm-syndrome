@@ -31,10 +31,13 @@ public class Input_Jump : MonoBehaviour {
     {
         if (coll.tag != "prince") scriptMouvement.onPlatform[controllerNumber] = true;
         //print(scriptMouvement.player);
+        scriptMouvement.solType = coll.tag;
     }
 
     void OnTriggerExit2D(Collider2D coll)
     {
         if (coll.tag != "prince") scriptMouvement.onPlatform[controllerNumber] = false;
+        scriptMouvement.solType = "";
+
     }
 }

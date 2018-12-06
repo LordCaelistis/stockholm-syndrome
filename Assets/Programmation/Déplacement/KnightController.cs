@@ -10,13 +10,18 @@ public class KnightController : MonoBehaviour {
     [SerializeField]
     public int controllerNumber = 1;
 
+    public string solType;
     // Son
     public AudioSource sourceSon;
     public AudioClip[] sonsSaut;
 
-    public AudioClip[] footstepsTerre;
+    public AudioClip[] footstepsHerbe;
     float intervalFootstepsMax = 0.3f;
     float intervalFootstepsNow = 0f;
+
+    public AudioClip[] footstepBois;
+    public AudioClip[] footstepGlace;
+    public AudioClip[] footstepPierre;
 
     public AudioClip[] sonTaunt;
     float intervalTauntMax = 3f;
@@ -133,7 +138,25 @@ public class KnightController : MonoBehaviour {
 
             if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
             {
-                SoundStuff.PlayRandomOneShot(sourceSon, footstepsTerre, 0.3f);
+                print(solType);
+
+                if (solType=="Herbe")
+                {
+                    SoundStuff.PlayRandomOneShot(sourceSon, footstepsHerbe, 0.3f);
+                }
+                else if (solType=="Bois")
+                {
+                   SoundStuff.PlayRandomOneShot(sourceSon, footstepBois, 0.3f);
+                }
+                else if (solType == "Glace")
+                {
+                    SoundStuff.PlayRandomOneShot(sourceSon, footstepGlace, 0.3f);
+                }
+                else if (solType == "Pierre")
+                {
+                    SoundStuff.PlayRandomOneShot(sourceSon, footstepPierre, 0.3f);
+                }
+
                 intervalFootstepsNow += intervalFootstepsMax;
             }
             else

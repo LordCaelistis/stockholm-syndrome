@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour {
         foreach (KeyValuePair<int, bool> item in playerArray)
         {
             if (item.Value == true) playerScore[(item.Key) - 1] += Time.deltaTime;
-            print(playerScore[(item.Key) - 1]);
+            // print(playerScore[(item.Key) - 1]);
             if (playerScore[(item.Key) - 1] >= winningScore)
             {
                 winningPlayer = item.Key;

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61459335766147098}
   m_Layer: 0
   m_Name: dirt_wall
-  m_TagString: Untagged
+  m_TagString: Herbe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1530578493445202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3198535, y: 2.05, z: -0.40685454}
+  m_LocalPosition: {x: 10.549245, y: 1.325097, z: -0.40685454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

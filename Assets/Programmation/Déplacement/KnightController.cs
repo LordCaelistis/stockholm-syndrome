@@ -197,6 +197,8 @@ public class KnightController : MonoBehaviour {
                         if(gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToRight[i])
                         {
                             PrincePrefab.AddComponent<Rigidbody2D>();
+                            PrincePrefab.GetComponent<BoxCollider2D>().enabled = true;
+                            PrincePrefab.GetComponent<PrinceBehavior>().cooldown_now += PrincePrefab.GetComponent<PrinceBehavior>().cooldown_max;
                             Vector3 pos0 = gameObject.transform.position;
                             Quaternion rot0 = Quaternion.identity;
                             //GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
@@ -222,6 +224,9 @@ public class KnightController : MonoBehaviour {
                     {
                         if (gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToLeft[i])
                         {
+                            PrincePrefab.AddComponent<Rigidbody2D>();
+                            PrincePrefab.GetComponent<BoxCollider2D>().enabled = true;
+                            PrincePrefab.GetComponent<PrinceBehavior>().cooldown_now += PrincePrefab.GetComponent<PrinceBehavior>().cooldown_max;
                             Vector3 pos0 = gameObject.transform.position;
                             Quaternion rot0 = Quaternion.identity;
                             //GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);

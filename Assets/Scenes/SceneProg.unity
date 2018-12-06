@@ -206,7 +206,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4820934091691790, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.26
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 4820934091691790, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1526,7 +1526,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4968834047988764, guid: 73765984b6f72d641a8ec01619cdea74, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.76
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 4968834047988764, guid: 73765984b6f72d641a8ec01619cdea74, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1576,11 +1576,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
-        type: 2}
-      propertyPath: footstepsHerbe.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4820934091691790, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
       propertyPath: m_LocalPosition.x
       value: -1.03
@@ -1613,40 +1608,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114853072956010416, guid: b3723cfa8c3fc7c4f994dc820240a852,
-        type: 2}
-      propertyPath: gameMaster
-      value: 
-      objectReference: {fileID: 1662434787}
-    - target: {fileID: 1900575239730708, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
-      propertyPath: m_Name
-      value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
-        type: 2}
-      propertyPath: footstepsHerbe.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 234432085467aee4ba2cad5bafd2e45e, type: 3}
-    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
-        type: 2}
-      propertyPath: footstepsHerbe.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: c3960735d8863cb49ab576089e74764a, type: 3}
-    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
-        type: 2}
-      propertyPath: footstepsHerbe.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6e76bcb66daad7042999ed5d68c12342, type: 3}
-    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
-        type: 2}
-      propertyPath: footstepsHerbe.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 2c67a071540c5174988a1c27ee206270, type: 3}
     - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
         type: 2}
       propertyPath: PrincePrefab
       value: 
       objectReference: {fileID: 978016357}
+    - target: {fileID: 1900575239730708, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
+      propertyPath: m_Name
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114853072956010416, guid: b3723cfa8c3fc7c4f994dc820240a852,
+        type: 2}
+      propertyPath: gameMaster
+      value: 
+      objectReference: {fileID: 1662434787}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
   m_IsPrefabParent: 0

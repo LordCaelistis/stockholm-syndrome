@@ -8,8 +8,8 @@ public class PrinceBehavior : MonoBehaviour {
     private int tempControllerNumber;
     private GameObject player;
 
-    float cooldown_max = 0.1f;
-    float cooldown_now = 0f;
+    public float cooldown_max = 1f;
+    public float cooldown_now = 0f;
 
     public AudioSource sourceSonPrince;
     public AudioClip[] RamassagePrince;
@@ -24,20 +24,17 @@ public class PrinceBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //frames d'invincibilité lorsque le Prince spawn
-		if (cooldown_now > 0) cooldown_now -= Time.deltaTime;
+		if (cooldown_now >= 0) cooldown_now -= Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-
         SoundStuff.PlayRandomOneShot(sourceSonPrince, RamassagePrince, 0.4f);
-
+        print(cooldown_now);
         if (cooldown_now <= 0)
         {
-            Timer.hasPrince = coll.name;
             if (coll.tag == "Player")
             {
-                princeCaught = true;
                 player = coll.gameObject;
                 print(coll.gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
                 gameObject.transform.parent = player.transform;

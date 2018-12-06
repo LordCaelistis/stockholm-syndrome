@@ -12,9 +12,22 @@ public class KnightController : MonoBehaviour {
 
     // Son
     public AudioSource sourceSon;
-    public AudioClip sonSaut;
+    public AudioClip[] sonsSaut;
+
+    public AudioClip[] footstepsTerre;
+    float intervalFootstepsMax = 0.3f;
+    float intervalFootstepsNow = 0f;
+
+    public AudioClip[] sonTaunt;
+    float intervalTauntMax = 3f;
+    float intervalTauntNow = 0f;
+
     public AudioClip MassueVent;
-    public AudioClip MassueTouche;
+    public AudioClip[] MassueTouche;
+    public AudioClip[] CriDeCoup;
+    public AudioClip[] CriTouche;
+
+    public AudioClip[] ClonkArmureMarche;
 
     // GameObject:
     public Rigidbody2D player;
@@ -51,9 +64,24 @@ public class KnightController : MonoBehaviour {
         againstWall = new bool[controllerNumber + 1];
         onPlatform[controllerNumber] = false;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
+
+
+        if (Input.GetButtonDown("B_" + controllerNumber) && (intervalTauntNow <= 0))
+        {
+
+            SoundStuff.PlayRandomOneShot(sourceSon, sonTaunt, 0.4f);
+            intervalTauntNow += intervalTauntMax;
+        }
+        else
+        {
+            intervalTauntNow -= Time.deltaTime;
+        }
+        
+
+
         if (cooldown_now <= 0)
         {
             if(Input.GetButtonDown("A_"+controllerNumber))
@@ -65,7 +93,7 @@ public class KnightController : MonoBehaviour {
                     cooldown_now_airmove += cooldown_max_airmove;
                     player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
 
-                    sourceSon.PlayOneShot(sonSaut, 0.3f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.4f);
                 }
                 //Saut depuis une plateforme
                 if (onPlatform[controllerNumber] == true)
@@ -74,11 +102,11 @@ public class KnightController : MonoBehaviour {
                     player.velocity += new Vector2(0, 10);
                     onPlatform[controllerNumber] = false;
 
-                    sourceSon.PlayOneShot(sonSaut, 0.2f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.4f);
                 }
                 cooldown_now += cooldown_max;
             }
-            
+
         }
         else cooldown_now -= Time.deltaTime;
 
@@ -89,16 +117,31 @@ public class KnightController : MonoBehaviour {
                 cooldown_now_massue += cooldown_max_massue;
 
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
+                SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
+                SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.3f);
             }
-        }        
+        }
         else cooldown_now_massue -= Time.deltaTime;
 
         //Réduction du cooldown du mouvement aérien
         if (cooldown_now_airmove > 0)  cooldown_now_airmove -= Time.deltaTime;
         if(cooldown_now_airmove < 0) cooldown_now_airmove = 0;
-        
+
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
-        if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
+        if (cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0) {
+            player.velocity += new Vector2(Input.GetAxis("L_XAxis_" + controllerNumber), 0);
+
+            if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
+            {
+                SoundStuff.PlayRandomOneShot(sourceSon, footstepsTerre, 0.3f);
+                intervalFootstepsNow += intervalFootstepsMax;
+            }
+            else
+            {
+                intervalFootstepsNow -= Time.deltaTime;
+            }
+            
+        };
 
         // Orientation:
         UpdateFlip();
@@ -118,7 +161,11 @@ public class KnightController : MonoBehaviour {
         if (pointContact2d.collider && pointContact2d.collider.tag == "Player")
         {
 
-            sourceSon.PlayOneShot(MassueTouche, 0.3f);
+            
+            SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);           
+            SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.5f);
+            SoundStuff.PlayRandomOneShot(sourceSon, CriTouche, 0.5f);
+
 
             //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
             print(pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);

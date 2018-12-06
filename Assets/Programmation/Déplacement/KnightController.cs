@@ -12,7 +12,7 @@ public class KnightController : MonoBehaviour {
 
     // Son
     public AudioSource sourceSon;
-    public AudioClip sonSaut;
+    public AudioClip[] sonsSaut;
     public AudioClip MassueVent;
     public AudioClip MassueTouche;
     public AudioClip CriDeCoup;
@@ -53,7 +53,7 @@ public class KnightController : MonoBehaviour {
         againstWall = new bool[controllerNumber + 1];
         onPlatform[controllerNumber] = false;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (cooldown_now <= 0)
@@ -67,7 +67,7 @@ public class KnightController : MonoBehaviour {
                     cooldown_now_airmove += cooldown_max_airmove;
                     player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
 
-                    sourceSon.PlayOneShot(sonSaut, 0.4f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.4f);
                 }
                 //Saut depuis une plateforme
                 if (onPlatform[controllerNumber] == true)
@@ -76,11 +76,11 @@ public class KnightController : MonoBehaviour {
                     player.velocity += new Vector2(0, 10);
                     onPlatform[controllerNumber] = false;
 
-                    sourceSon.PlayOneShot(sonSaut, 0.4f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.4f);
                 }
                 cooldown_now += cooldown_max;
             }
-            
+
         }
         else cooldown_now -= Time.deltaTime;
 
@@ -93,13 +93,13 @@ public class KnightController : MonoBehaviour {
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
                 sourceSon.PlayOneShot(CriDeCoup, 0.5f);
             }
-        }        
+        }
         else cooldown_now_massue -= Time.deltaTime;
 
         //Réduction du cooldown du mouvement aérien
         if (cooldown_now_airmove > 0)  cooldown_now_airmove -= Time.deltaTime;
         if(cooldown_now_airmove < 0) cooldown_now_airmove = 0;
-        
+
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
         if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
 

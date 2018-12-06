@@ -538,7 +538,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e6d9dcc4b45fb0a42a618be9c5faaeb9, type: 3}
   - {fileID: 8300000, guid: 5cf9ed92df79d99408e827906cba4fbf, type: 3}
   MassueVent: {fileID: 8300000, guid: 5b8d8efc851a1284bbe46150032f5192, type: 3}
-  MassueTouche: {fileID: 0}
+  MassueTouche:
+  - {fileID: 8300000, guid: 68d517b577950054ea9fc5e6ce581607, type: 3}
+  - {fileID: 8300000, guid: ee4892b9e08e8854f87a0afcafa3c976, type: 3}
+  - {fileID: 8300000, guid: 6bb6b0c39066dd54ab55afaa0a8bb96b, type: 3}
   ClonkArmureMarche:
   - {fileID: 8300000, guid: 9d358a261f3b3de4bb6bddf6f0dd1163, type: 3}
   - {fileID: 8300000, guid: 4d624c8ae0d88d8409b6dc9d96422094, type: 3}

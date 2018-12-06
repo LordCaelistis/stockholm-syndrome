@@ -28,7 +28,9 @@ public class KnightController : MonoBehaviour {
     float intervalTauntNow = 0f;
 
     public AudioClip MassueVent;
-    public AudioClip MassueTouche;
+    public AudioClip[] MassueTouche;
+    public AudioClip[] ClonkArmureMarche;
+    public AudioClip[] CriDeCoup;
 
     // GameObject:
     public Rigidbody2D player;
@@ -183,7 +185,7 @@ public class KnightController : MonoBehaviour {
     {
         if (facingRight == true && collisionMassue.GetComponent<Input_Massue>().playersToRight.Count > 0)
         {
-            sourceSon.PlayOneShot(MassueTouche, 0.3f);
+            SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToRight.Count; i++)
             {
                 print(collisionMassue.GetComponent<Input_Massue>().playersToRight[i]);
@@ -208,7 +210,7 @@ public class KnightController : MonoBehaviour {
 
         else if (facingRight == false && collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count > 0)
         {
-            sourceSon.PlayOneShot(MassueTouche, 0.3f);
+            SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count; i++)
             {
                 print(collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]);

@@ -15,6 +15,8 @@ public class KnightController : MonoBehaviour {
     public AudioClip sonSaut;
     public AudioClip MassueVent;
     public AudioClip MassueTouche;
+    public AudioClip CriDeCoup;
+    public AudioClip CriTouche;
 
     // GameObject:
     public Rigidbody2D player;
@@ -65,7 +67,7 @@ public class KnightController : MonoBehaviour {
                     cooldown_now_airmove += cooldown_max_airmove;
                     player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
 
-                    sourceSon.PlayOneShot(sonSaut, 0.3f);
+                    sourceSon.PlayOneShot(sonSaut, 0.4f);
                 }
                 //Saut depuis une plateforme
                 if (onPlatform[controllerNumber] == true)
@@ -74,7 +76,7 @@ public class KnightController : MonoBehaviour {
                     player.velocity += new Vector2(0, 10);
                     onPlatform[controllerNumber] = false;
 
-                    sourceSon.PlayOneShot(sonSaut, 0.2f);
+                    sourceSon.PlayOneShot(sonSaut, 0.4f);
                 }
                 cooldown_now += cooldown_max;
             }
@@ -89,6 +91,7 @@ public class KnightController : MonoBehaviour {
                 cooldown_now_massue += cooldown_max_massue;
 
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
+                sourceSon.PlayOneShot(CriDeCoup, 0.5f);
             }
         }        
         else cooldown_now_massue -= Time.deltaTime;
@@ -119,6 +122,9 @@ public class KnightController : MonoBehaviour {
         {
 
             sourceSon.PlayOneShot(MassueTouche, 0.3f);
+            sourceSon.PlayOneShot(CriDeCoup, 0.5f);
+            sourceSon.PlayOneShot(CriTouche, 0.5f);
+
 
             //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
             print(pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);

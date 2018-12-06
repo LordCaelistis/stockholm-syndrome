@@ -70,6 +70,24 @@ public class KnightController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+        if (intervalTauntNow <= 0)
+        {
+            if(Input.GetButtonDown("B_" + controllerNumber))
+            {
+                SoundStuff.PlayRandomOneShot(sourceSon, sonTaunt, 0.4f);
+                intervalTauntNow += intervalTauntMax;
+            }
+            
+        }
+        else
+        {
+            intervalTauntNow -= Time.deltaTime;
+        }
+        
+
+
         if (cooldown_now <= 0)
         {
             if(Input.GetButtonDown("A_"+controllerNumber))
@@ -105,6 +123,8 @@ public class KnightController : MonoBehaviour {
                 cooldown_now_massue += cooldown_max_massue;
 
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
+                SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
+                SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
             }
         }        
         else cooldown_now_massue -= Time.deltaTime;
@@ -125,18 +145,22 @@ public class KnightController : MonoBehaviour {
                 if (solType=="Herbe")
                 {
                     SoundStuff.PlayRandomOneShot(sourceSon, footstepsHerbe, 0.3f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
                 }
                 else if (solType=="Bois")
                 {
                    SoundStuff.PlayRandomOneShot(sourceSon, footstepBois, 0.3f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
                 }
                 else if (solType == "Glace")
                 {
                     SoundStuff.PlayRandomOneShot(sourceSon, footstepGlace, 0.3f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
                 }
                 else if (solType == "Pierre")
                 {
                     SoundStuff.PlayRandomOneShot(sourceSon, footstepPierre, 0.3f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
                 }
 
                 intervalFootstepsNow += intervalFootstepsMax;

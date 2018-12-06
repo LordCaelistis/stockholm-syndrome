@@ -81,7 +81,7 @@ public class KnightController : MonoBehaviour {
                     cooldown_now_airmove += cooldown_max_airmove;
                     player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
 
-                    sourceSon.PlayOneShot(sonSaut, 0.3f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.3f);
                 }
                 //Saut depuis une plateforme
                 if (onPlatform[controllerNumber] == true)
@@ -90,7 +90,7 @@ public class KnightController : MonoBehaviour {
                     player.velocity += new Vector2(0, 10);
                     onPlatform[controllerNumber] = false;
 
-                    sourceSon.PlayOneShot(sonSaut, 0.2f);
+                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.3f);
                 }
                 cooldown_now += cooldown_max;
             }
@@ -114,7 +114,9 @@ public class KnightController : MonoBehaviour {
         if(cooldown_now_airmove < 0) cooldown_now_airmove = 0;
         
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
-        if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
+        if(cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0)
+        {
+            player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
 
             if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
             {
@@ -143,8 +145,8 @@ public class KnightController : MonoBehaviour {
             {
                 intervalFootstepsNow -= Time.deltaTime;
             }
-            
-        };
+
+        }
 
         // Orientation:
         UpdateFlip();

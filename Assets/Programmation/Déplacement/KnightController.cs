@@ -13,10 +13,14 @@ public class KnightController : MonoBehaviour {
     // Son
     public AudioSource sourceSon;
     public AudioClip[] sonsSaut;
+    public AudioClip[] footstepsTerre;
+    float intervalFootstepsMax = 0.3f;
+    float intervalFootstepsNow = 0f;
+
     public AudioClip MassueVent;
-    public AudioClip MassueTouche;
-    public AudioClip CriDeCoup;
-    public AudioClip CriTouche;
+    public AudioClip[] MassueTouche;
+    public AudioClip[] CriDeCoup;
+    public AudioClip[] CriTouche;
 
     // GameObject:
     public Rigidbody2D player;
@@ -91,7 +95,7 @@ public class KnightController : MonoBehaviour {
                 cooldown_now_massue += cooldown_max_massue;
 
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
-                sourceSon.PlayOneShot(CriDeCoup, 0.5f);
+                SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
             }
         }
         else cooldown_now_massue -= Time.deltaTime;
@@ -101,7 +105,20 @@ public class KnightController : MonoBehaviour {
         if(cooldown_now_airmove < 0) cooldown_now_airmove = 0;
 
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
-        if(cooldown_now_airmove <= 0f) player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
+        if (cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0) {
+            player.velocity += new Vector2(Input.GetAxis("L_XAxis_" + controllerNumber), 0);
+
+            if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
+            {
+                SoundStuff.PlayRandomOneShot(sourceSon, footstepsTerre, 0.3f);
+                intervalFootstepsNow += intervalFootstepsMax;
+            }
+            else
+            {
+                intervalFootstepsNow -= Time.deltaTime;
+            }
+            
+        };
 
         // Orientation:
         UpdateFlip();
@@ -121,9 +138,10 @@ public class KnightController : MonoBehaviour {
         if (pointContact2d.collider && pointContact2d.collider.tag == "Player")
         {
 
-            sourceSon.PlayOneShot(MassueTouche, 0.3f);
-            sourceSon.PlayOneShot(CriDeCoup, 0.5f);
-            sourceSon.PlayOneShot(CriTouche, 0.5f);
+            
+            SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);           
+            SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.5f);
+            SoundStuff.PlayRandomOneShot(sourceSon, CriTouche, 0.5f);
 
 
             //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);

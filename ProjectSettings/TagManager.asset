@@ -8,6 +8,11 @@ TagManager:
   - Glissant
   - Piege
   - PlayerRelated
+  - Bois
+  - Herbe
+  - Pierre
+  - Slime
+  - Glace
   layers:
   - Default
   - TransparentFX

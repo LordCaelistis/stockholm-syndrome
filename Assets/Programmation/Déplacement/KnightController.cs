@@ -13,14 +13,21 @@ public class KnightController : MonoBehaviour {
     // Son
     public AudioSource sourceSon;
     public AudioClip[] sonsSaut;
+
     public AudioClip[] footstepsTerre;
     float intervalFootstepsMax = 0.3f;
     float intervalFootstepsNow = 0f;
+
+    public AudioClip[] sonTaunt;
+    float intervalTauntMax = 3f;
+    float intervalTauntNow = 0f;
 
     public AudioClip MassueVent;
     public AudioClip[] MassueTouche;
     public AudioClip[] CriDeCoup;
     public AudioClip[] CriTouche;
+
+    public AudioClip[] ClonkArmureMarche;
 
     // GameObject:
     public Rigidbody2D player;
@@ -60,6 +67,21 @@ public class KnightController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+
+        if (Input.GetButtonDown("B_" + controllerNumber) && (intervalTauntNow <= 0))
+        {
+
+            SoundStuff.PlayRandomOneShot(sourceSon, sonTaunt, 0.4f);
+            intervalTauntNow += intervalTauntMax;
+        }
+        else
+        {
+            intervalTauntNow -= Time.deltaTime;
+        }
+        
+
+
         if (cooldown_now <= 0)
         {
             if(Input.GetButtonDown("A_"+controllerNumber))
@@ -96,6 +118,7 @@ public class KnightController : MonoBehaviour {
 
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
                 SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
+                SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.3f);
             }
         }
         else cooldown_now_massue -= Time.deltaTime;

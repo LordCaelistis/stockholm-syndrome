@@ -199,6 +199,7 @@ public class KnightController : MonoBehaviour {
                             PrincePrefab.AddComponent<Rigidbody2D>();
                             Vector3 pos0 = gameObject.transform.position;
                             Quaternion rot0 = Quaternion.identity;
+                            //GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
                             princeRigid = PrincePrefab.GetComponent<Rigidbody2D>();
                             princeRigid.velocity += new Vector2(0, 8);
                             Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] = false;
@@ -221,13 +222,12 @@ public class KnightController : MonoBehaviour {
                     {
                         if (gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToLeft[i])
                         {
-                            PrincePrefab.AddComponent<Rigidbody2D>();
                             Vector3 pos0 = gameObject.transform.position;
                             Quaternion rot0 = Quaternion.identity;
+                            //GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
                             princeRigid = PrincePrefab.GetComponent<Rigidbody2D>();
                             princeRigid.velocity += new Vector2(0, 8);
                             Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] = false;
-                            PrincePrefab.GetComponent<BoxCollider2D>().enabled = true;
                         }
                     }
                 }

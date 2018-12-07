@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -156,28 +156,11 @@ public class KnightController : MonoBehaviour {
 
             if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
             {
-                print(solType);
-
-                if (solType=="Herbe")
-                {
-                    SoundStuff.PlayRandomOneShot(sourceSon, footstepsHerbe, 0.3f);
-                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
-                }
-                else if (solType=="Bois")
-                {
-                   SoundStuff.PlayRandomOneShot(sourceSon, footstepBois, 0.3f);
-                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
-                }
-                else if (solType == "Glace")
-                {
-                    SoundStuff.PlayRandomOneShot(sourceSon, footstepGlace, 0.3f);
-                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
-                }
-                else if (solType == "Pierre")
-                {
-                    SoundStuff.PlayRandomOneShot(sourceSon, footstepPierre, 0.3f);
-                    SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
-                }
+                SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
+                if(solType == "Herbe")  SoundStuff.PlayRandomOneShot(sourceSon, footstepsHerbe, 0.3f);
+                if(solType == "Bois")   SoundStuff.PlayRandomOneShot(sourceSon, footstepBois,   0.3f);
+                if(solType == "Glace")  SoundStuff.PlayRandomOneShot(sourceSon, footstepGlace,  0.3f);
+                if(solType == "Pierre") SoundStuff.PlayRandomOneShot(sourceSon, footstepPierre, 0.3f);
 
                 intervalFootstepsNow += intervalFootstepsMax;
             }

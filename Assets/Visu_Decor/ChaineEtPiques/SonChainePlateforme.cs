@@ -7,14 +7,15 @@ public class SonChainePlateforme : MonoBehaviour {
     public Rigidbody2D chaineBody;
 
     // Son
-    public AudioSource sourceSonChaine;
     public AudioClip[] Chaine;
     float intervalchaineMax = 0.5f;
     float intervalchaineNow = 0f;
 
+    AudioSource sourceSon;
+
     // Use this for initialization
     void Start() {
-
+        sourceSon = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class SonChainePlateforme : MonoBehaviour {
 
             if (intervalchaineNow <= 0)
             {
-                SoundStuff.PlayRandomOneShot(sourceSonChaine, Chaine, 0.4f);
+                SoundStuff.PlayRandomOneShot(sourceSon, Chaine, 0.4f);
                 intervalchaineNow += intervalchaineMax;
             }
             else
@@ -37,6 +38,5 @@ public class SonChainePlateforme : MonoBehaviour {
 
         }
 
-
-}
+    }
 }

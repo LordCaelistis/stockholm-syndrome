@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114134265884157654}
   - component: {fileID: 114504997620971424}
   m_Layer: 0
-  m_Name: Chaine et pic 1
+  m_Name: ChaineEtPiques
   m_TagString: Piege
   m_Icon: {fileID: 8220585740371884164, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 61717338917993722}
   - component: {fileID: 231174621774020622}
   - component: {fileID: 231519887888428120}
+  - component: {fileID: 114942036485711172}
   m_Layer: 0
   m_Name: Pics
   m_TagString: Untagged
@@ -102,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211224073682074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 1.66, z: 0}
+  m_LocalPosition: {x: -1.78, y: -1.13, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 4552243878354512}
@@ -292,7 +293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaineBody: {fileID: 50384957945495590}
-  sourceSonChaine: {fileID: 82852541652432680}
   Chaine:
   - {fileID: 8300000, guid: ff46993120cf8b2479628ee10c11fd10, type: 3}
   - {fileID: 8300000, guid: 6121dc98177318a46af0e94ea8160b07, type: 3}
@@ -309,6 +309,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RoomSize: 3
+--- !u!114 &114942036485711172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1496131389829392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4518b9b6122ce422d9e29d6fe6b1db22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 1211224073682074}
+  clonks:
+  - {fileID: 8300000, guid: 68d517b577950054ea9fc5e6ce581607, type: 3}
+  - {fileID: 8300000, guid: ee4892b9e08e8854f87a0afcafa3c976, type: 3}
+  - {fileID: 8300000, guid: 6bb6b0c39066dd54ab55afaa0a8bb96b, type: 3}
+  cris:
+  - {fileID: 8300000, guid: 47052ca465f9cc448b00f1ec29ce1c10, type: 3}
+  - {fileID: 8300000, guid: 2aaa65cbea5143d4fb8cf5e81a887cbd, type: 3}
 --- !u!212 &212043273828646986
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -449,7 +468,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.030565262, y: 3.7595778}
-  m_ConnectedAnchor: {x: -0.01328263, y: 6.801789}
+  m_ConnectedAnchor: {x: -1.8432826, y: 4.011789}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -472,7 +491,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.000000018914541, y: 0.56037104}
-  m_ConnectedAnchor: {x: 0.09600003, y: -3.851555}
+  m_ConnectedAnchor: {x: 0.09599996, y: -3.8515549}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

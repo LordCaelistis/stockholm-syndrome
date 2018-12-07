@@ -213,7 +213,7 @@ public class KnightController : MonoBehaviour {
         {
 
             Invoke("PlayAudioHit", 0.3f);
-            
+
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToRight.Count; i++)
             {
                 foreach(GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
@@ -231,6 +231,7 @@ public class KnightController : MonoBehaviour {
                         if(gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToRight[i])
                         {
                             PrincePrefab.AddComponent<Rigidbody2D>();
+                            PrincePrefab.GetComponent<Animator>().SetBool("isCarried", false);
                             PrincePrefab.GetComponent<BoxCollider2D>().enabled = true;
                             PrincePrefab.GetComponent<PrinceBehavior>().cooldown_now += PrincePrefab.GetComponent<PrinceBehavior>().cooldown_max;
                             Vector3 pos0 = gameObject.transform.position;
@@ -251,7 +252,7 @@ public class KnightController : MonoBehaviour {
 
             Invoke("PlayAudioHit", 0.3f);
 
-            
+
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count; i++)
             {
                 foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))

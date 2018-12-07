@@ -16,12 +16,16 @@ public class PrinceBehavior : MonoBehaviour {
     public AudioClip[] CriPrince;
     public static bool princeCaught;
 
+    Animator animator;
+
     // Use this for initialization
     void Start () {
         cooldown_now += cooldown_max;
         print("Coucou");
+
+        animator = gameObject.GetComponent<Animator>();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         //frames d'invincibilité lorsque le Prince spawn
@@ -46,6 +50,8 @@ public class PrinceBehavior : MonoBehaviour {
                 transform.localPosition = new Vector3(0, 0.5f, 0);
                 Destroy(GetComponent<Rigidbody2D>());
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+                animator.SetBool("isCarried", true);
             }
         }
     }

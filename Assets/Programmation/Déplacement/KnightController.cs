@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -93,15 +93,6 @@ public class KnightController : MonoBehaviour {
         {
             if(Input.GetButtonDown("A_"+controllerNumber))
             {
-                //Walljump
-                if (againstWall[controllerNumber] == true)
-                {
-                    //Léger cooldown pour forcer le joueur a décoller du mur lors d'un walljump
-                    cooldown_now_airmove += cooldown_max_airmove;
-                    player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
-
-                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.3f);
-                }
                 //Saut depuis une plateforme
                 if (onPlatform[controllerNumber] == true)
                 {
@@ -110,8 +101,22 @@ public class KnightController : MonoBehaviour {
                     onPlatform[controllerNumber] = false;
 
                     SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.3f);
+
+                    cooldown_now += cooldown_max;
+                    animator.SetBool("isJumping", true);
                 }
-                cooldown_now += cooldown_max;
+                //Walljump
+                else if (againstWall[controllerNumber] == true)
+                {
+                    //Léger cooldown pour forcer le joueur a décoller du mur lors d'un walljump
+                    cooldown_now_airmove += cooldown_max_airmove;
+                    player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
+
+                    SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.3f);
+
+                    cooldown_now += cooldown_max;
+                    animator.SetBool("isJumping", true);
+                }
             }
 
         }

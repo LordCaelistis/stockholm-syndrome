@@ -34,6 +34,7 @@ public class KnightController : MonoBehaviour {
     // GameObject:
     public GameObject playerGameObject;
     public Rigidbody2D player;
+    public Rigidbody2D tempRigidBodyPlayer;
     public GameObject PrincePrefab;
     public Rigidbody2D princeRigid;
     public SpriteRenderer sprite;
@@ -194,7 +195,13 @@ public class KnightController : MonoBehaviour {
             SoundStuff.PlayRandomOneShot(sourceSon, cris, 0.3f);
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToRight.Count; i++)
             {
-                print(collisionMassue.GetComponent<Input_Massue>().playersToRight[i]);
+                foreach(GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    if (gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToRight[i])
+                    {
+                        GetBonked(gameObject);
+                    }
+                }
                 //Si un des ennemis frappés possède la princesse...
                 if (Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] == true)
                 {
@@ -223,7 +230,13 @@ public class KnightController : MonoBehaviour {
             SoundStuff.PlayRandomOneShot(sourceSon, cris, 0.3f);
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count; i++)
             {
-                print(collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]);
+                foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    if (gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber == collisionMassue.GetComponent<Input_Massue>().playersToLeft[i])
+                    {
+                        GetBonked(gameObject);
+                    }
+                }
                 //Si un des ennemis frappés possède la princesse...
                 if (Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] == true)
                 {
@@ -245,28 +258,16 @@ public class KnightController : MonoBehaviour {
                 }
             }
         }
-        /*animator.SetInteger("attack", 2);
-        //Invoke("ResetAttack", 0.2f);
-        LayerMask mask = LayerMask.GetMask("Default");
-        Vector3 raycastStart = new Vector3(positionStartRaycastX, player.transform.position.y, player.transform.position.z);
-        //Vector3 drawLineEnd = new Vector3(positionStartRaycastX + 0.5f, player.transform.position.y, player.transform.position.z);
-        RaycastHit2D pointContact2d = Physics2D.Raycast(raycastStart, new Vector2(directionRaycast, 0), 0.5f, mask);
-        if (pointContact2d.collider && pointContact2d.collider.tag == "Player")
-        {
-            sourceSon.PlayOneShot(MassueTouche, 0.3f);
-            //Debug.DrawLine(raycastStart, drawLineEnd, Color.white, 2.5f);
-            print(pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
-            if(Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] == true)
-            {
-                print("Il avait la princesse !");
-                Vector3 pos0 = pointContact2d.collider.transform.position;
-                Quaternion rot0 = Quaternion.identity;
-                GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
-                princeRigid = prince0.GetComponent<Rigidbody2D>();
-                princeRigid.velocity += new Vector2(0, 8);
-                Timer.playerArray[pointContact2d.collider.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] = false;
-            }
-        }*/
+    }
+
+    void GetBonked(GameObject gameObject)
+    {
+        animator.SetTrigger("hit");
+        tempRigidBodyPlayer = gameObject.GetComponent<Rigidbody2D>();
+        if(sprite.flipX == false) tempRigidBodyPlayer.velocity = new Vector2(50f, 10f);
+        if (sprite.flipX == true) tempRigidBodyPlayer.velocity = new Vector2(-50f, 10f);
+        gameObject.transform.GetChild(2).GetComponent<KnightController>().cooldown_now_airmove = 1f;
+        print(gameObject.transform.GetChild(2).GetComponent<KnightController>().cooldown_now_airmove);
     }
 
     // Orientation:

@@ -157,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1819626779457962}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.61, y: 1.81, z: 0}
+  m_LocalPosition: {x: 11.61, y: -1.19, z: 0}
   m_LocalScale: {x: 2.2, y: 2.2, z: 1}
   m_Children:
   - {fileID: 4350430623498936}
@@ -465,10 +465,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0efb6c05006d04802b36313bf2603004, type: 3}
   - {fileID: 8300000, guid: 10ad10192c7344ed39d530129aae8e95, type: 3}
   - {fileID: 8300000, guid: 1ed2762822a244244ac42ced7a47efb0, type: 3}
+  cris:
+  - {fileID: 8300000, guid: 47052ca465f9cc448b00f1ec29ce1c10, type: 3}
+  - {fileID: 8300000, guid: 2aaa65cbea5143d4fb8cf5e81a887cbd, type: 3}
   playerGameObject: {fileID: 1708584434845580}
   player: {fileID: 50784183898058216}
-  PrincePrefab: {fileID: 1577558225718376, guid: 73765984b6f72d641a8ec01619cdea74,
-    type: 2}
+  PrincePrefab: {fileID: 0}
   princeRigid: {fileID: 50324674869909432, guid: 73765984b6f72d641a8ec01619cdea74,
     type: 2}
   sprite: {fileID: 212386479369175854}

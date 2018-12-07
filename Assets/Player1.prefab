@@ -144,7 +144,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1372482250267784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.68, y: 1.81, z: 0}
+  m_LocalPosition: {x: -10.68, y: -1.19, z: 0}
   m_LocalScale: {x: 2.2, y: 2.2, z: 1}
   m_Children:
   - {fileID: 4028218833087062}
@@ -465,6 +465,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0efb6c05006d04802b36313bf2603004, type: 3}
   - {fileID: 8300000, guid: 10ad10192c7344ed39d530129aae8e95, type: 3}
   - {fileID: 8300000, guid: 1ed2762822a244244ac42ced7a47efb0, type: 3}
+  cris:
+  - {fileID: 0}
+  - {fileID: 0}
   playerGameObject: {fileID: 1714329442742914}
   player: {fileID: 50419166319493018}
   PrincePrefab: {fileID: 0}

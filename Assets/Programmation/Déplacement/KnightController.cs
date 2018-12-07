@@ -14,7 +14,7 @@ public class KnightController : MonoBehaviour {
     public AudioClip[] sonsSaut;
 
     public AudioClip[] footstepsHerbe;
-    float intervalFootstepsMax = 0.4f;
+    float intervalFootstepsMax = 0.3f;
     float intervalFootstepsNow = 0f;
 
     public AudioClip[] footstepBois;

@@ -87,6 +87,12 @@ public class KnightController : MonoBehaviour {
             intervalTauntNow -= Time.deltaTime;
         }
 
+        if(Input.GetButtonDown("Y_" + controllerNumber)){
+            animator.SetBool("isParrying", true);
+        }
+        if(Input.GetButtonUp("Y_" + controllerNumber)){
+            animator.SetBool("isParrying", false);
+        }
 
 
         if (cooldown_now <= 0)

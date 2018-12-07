@@ -21,6 +21,8 @@ public class KnightController : MonoBehaviour {
     public AudioClip[] footstepGlace;
     public AudioClip[] footstepPierre;
 
+    public AudioClip[] SonDash;
+
     public AudioClip[] sonTaunt;
     float intervalTauntMax = 3f;
     float intervalTauntNow = 0f;
@@ -110,6 +112,7 @@ public class KnightController : MonoBehaviour {
             cooldown_now_dash += cooldown_max_dash;
             player.velocity = new Vector2(vectorDash, 0);
             Invoke("resetSpeed", 0.3f);
+            SoundStuff.PlayRandomOneShot(sourceSon, SonDash, 0.3f);
         }
 
 

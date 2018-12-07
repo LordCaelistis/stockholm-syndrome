@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SceneTestProg.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Theo test.unity
     guid: 44a4fd8325fe1164bbae2fc8c6b5e984
+  - enabled: 1
+    path: Assets/Scenes/Scene en pierre.unity
+    guid: 110f8dc75a18e624b9124bb4f37e806b
   m_configObjects: {}

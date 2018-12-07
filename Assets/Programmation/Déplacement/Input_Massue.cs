@@ -10,16 +10,12 @@ public class Input_Massue : MonoBehaviour
     public GameObject personnage;
     public Timer gameMaster;
     private int tempPlayerHit;
-    Rigidbody2D rigid;
     public List<int> playersToLeft = new List<int>();
     public List<int> playersToRight = new List<int>();
-    int controllerNumber;
 
     // Use this for initialization
     void Start()
     {
-        rigid = personnage.GetComponent<Rigidbody2D>();
-        controllerNumber = scriptMouvement.getSetControllerNumber;
     }
 
     // Update is called once per frame

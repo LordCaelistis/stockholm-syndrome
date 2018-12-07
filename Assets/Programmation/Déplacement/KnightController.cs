@@ -34,7 +34,7 @@ public class KnightController : MonoBehaviour {
     // GameObject:
     public GameObject playerGameObject;
     public Rigidbody2D player;
-    public Rigidbody2D tempRigidBodyPlayer;
+    Rigidbody2D tempRigidBodyPlayer;
     public GameObject PrincePrefab;
     public Rigidbody2D princeRigid;
     public SpriteRenderer sprite;
@@ -42,20 +42,24 @@ public class KnightController : MonoBehaviour {
     public Animator animator;
 
     // Valeurs:
-    float vitesse = 3.5f;
-    float directionRaycast;
-    float positionStartRaycastX;
+    float vitesse = 6f;
     public bool[] onPlatform;
     public bool[] againstWall;
     public bool facingRight;
 
+    //Valeurs déplacement
+    float jumpHeight = 12f;
+    float vectorDash = 500f;
+
     // Cooldowns
-    float cooldown_max = 0.2f;
+    float cooldown_max = 0.1f;
     float cooldown_now = 0f;
-    float cooldown_max_airmove = 0.05f;
+    float cooldown_max_airmove = 0.2f;
     float cooldown_now_airmove = 0f;
-    float cooldown_max_massue = 0.5f;
+    float cooldown_max_massue = 0.4f;
     float cooldown_now_massue = 0f;
+    float cooldown_max_dash = 0.5f;
+    float cooldown_now_dash = 0f;
 
 
     public int getSetControllerNumber
@@ -90,13 +94,22 @@ public class KnightController : MonoBehaviour {
             intervalTauntNow -= Time.deltaTime;
         }
 
-        if(Input.GetButtonDown("Y_" + controllerNumber)){
+        /*if(Input.GetButtonDown("Y_" + controllerNumber)){
             animator.SetBool("isParrying", true);
             SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.4f);
         }
         if(Input.GetButtonUp("Y_" + controllerNumber)){
             animator.SetBool("isParrying", false);
             SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.4f);
+        }*/
+
+        if(Input.GetButtonDown("Y_" + controllerNumber) && cooldown_now_dash <= 0 && Timer.playerArray[controllerNumber] == false)
+        {
+            vitesse = 15f;
+            cooldown_now_airmove += cooldown_max_airmove;
+            cooldown_now_dash += cooldown_max_dash;
+            player.velocity = new Vector2(vectorDash, 0);
+            Invoke("resetSpeed", 0.3f);
         }
 
 
@@ -109,7 +122,7 @@ public class KnightController : MonoBehaviour {
                 if (playerGameObject.GetComponent<Input_Jump>().plateformCount > 0)
                 {
                     //print(getSetOnPlatform + "" + controllerNumber);
-                    player.velocity += new Vector2(0, 10);
+                    player.velocity += new Vector2(0, jumpHeight);
                     onPlatform[controllerNumber] = false;
 
                     SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.3f);
@@ -122,7 +135,7 @@ public class KnightController : MonoBehaviour {
                 {
                     //Léger cooldown pour forcer le joueur a décoller du mur lors d'un walljump
                     cooldown_now_airmove += cooldown_max_airmove;
-                    player.velocity += new Vector2(-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 40, 8f);
+                    player.velocity += new Vector2((-(Input.GetAxis("L_XAxis_"+controllerNumber)) * 400), jumpHeight-2);
 
                     SoundStuff.PlayRandomOneShot(sourceSon, sonsSaut, 0.3f);
 
@@ -148,12 +161,14 @@ public class KnightController : MonoBehaviour {
         }
         else cooldown_now_massue -= Time.deltaTime;
 
-        //Réduction du cooldown du mouvement aérien
+        //Réduction du cooldown du mouvement aérien, et du dash
         if (cooldown_now_airmove > 0)  cooldown_now_airmove -= Time.deltaTime;
         if(cooldown_now_airmove < 0) cooldown_now_airmove = 0;
+        if (cooldown_now_dash > 0) cooldown_now_dash -= Time.deltaTime;
+        if (cooldown_now_dash < 0) cooldown_now_dash = 0;
 
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
-        if(cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0)
+        if (cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0)
         {
             player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
 
@@ -185,6 +200,11 @@ public class KnightController : MonoBehaviour {
 
         // Saut:
         player.velocity = new Vector2(Mathf.Clamp(player.velocity.x, -vitesse, vitesse), player.velocity.y);
+    }
+
+    void resetSpeed()
+    {
+        vitesse = 6f;
     }
 
     void MassueStrike()
@@ -266,10 +286,10 @@ public class KnightController : MonoBehaviour {
 
     void GetBonked(GameObject gameObject)
     {
-        animator.SetTrigger("hit");
+        gameObject.GetComponent<Animator>().SetTrigger("hit");
         tempRigidBodyPlayer = gameObject.GetComponent<Rigidbody2D>();
-        if(sprite.flipX == false) tempRigidBodyPlayer.velocity = new Vector2(50f, 10f);
-        if (sprite.flipX == true) tempRigidBodyPlayer.velocity = new Vector2(-50f, 10f);
+        if(sprite.flipX == false) tempRigidBodyPlayer.velocity = new Vector2(25f, 10f);
+        if (sprite.flipX == true) tempRigidBodyPlayer.velocity = new Vector2(-25f, 10f);
         gameObject.transform.GetChild(2).GetComponent<KnightController>().cooldown_now_airmove = 1f;
         print(gameObject.transform.GetChild(2).GetComponent<KnightController>().cooldown_now_airmove);
     }
@@ -280,17 +300,15 @@ public class KnightController : MonoBehaviour {
         if (player.velocity.x > 0.01)
         {
             sprite.flipX = false;
-            directionRaycast = 1;
-            positionStartRaycastX = player.transform.position.x + (sprite.size.x)/2;
             facingRight = true;
+            vectorDash = 500;
             //collisionMassue.GetComponent<Input_Massue>.playersHit.Clear();
         }
         else if (player.velocity.x < -0.01)
         {
             sprite.flipX = true;
-            directionRaycast = -1;
-            positionStartRaycastX = (player.transform.position.x) - 0.2f;
             facingRight = false;
+            vectorDash = -500;
         }
     }
 

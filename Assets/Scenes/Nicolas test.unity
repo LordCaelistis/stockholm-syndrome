@@ -3125,16 +3125,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114675212276208610, guid: 2e611fb6928f3421fb0354952a864956,
-        type: 2}
-      propertyPath: PrincePrefab
-      value: 
-      objectReference: {fileID: 1180045436}
     - target: {fileID: 114551786444407502, guid: 2e611fb6928f3421fb0354952a864956,
         type: 2}
       propertyPath: gameMaster
       value: 
       objectReference: {fileID: 1426068250}
+    - target: {fileID: 114675212276208610, guid: 2e611fb6928f3421fb0354952a864956,
+        type: 2}
+      propertyPath: PrincePrefab
+      value: 
+      objectReference: {fileID: 1180045436}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e611fb6928f3421fb0354952a864956, type: 2}
   m_IsPrefabParent: 0
@@ -3705,16 +3705,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114656417073464458, guid: 074bec3ce6ea543f6812b68ee17db1a4,
-        type: 2}
-      propertyPath: PrincePrefab
-      value: 
-      objectReference: {fileID: 1180045436}
     - target: {fileID: 114452655354700940, guid: 074bec3ce6ea543f6812b68ee17db1a4,
         type: 2}
       propertyPath: gameMaster
       value: 
       objectReference: {fileID: 1426068250}
+    - target: {fileID: 114656417073464458, guid: 074bec3ce6ea543f6812b68ee17db1a4,
+        type: 2}
+      propertyPath: PrincePrefab
+      value: 
+      objectReference: {fileID: 1180045436}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 074bec3ce6ea543f6812b68ee17db1a4, type: 2}
   m_IsPrefabParent: 0

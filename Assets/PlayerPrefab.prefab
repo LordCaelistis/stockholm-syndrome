@@ -376,6 +376,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptMouvement: {fileID: 114520609025772102}
+  atterissageHerbe: {fileID: 8300000, guid: e61320442b518974b81d6c0d571ec205, type: 3}
+  atterissageBois: {fileID: 8300000, guid: 34b2bbe7cffba6d48a84ab017844553a, type: 3}
+  atterissagePierre: {fileID: 8300000, guid: 48f9347791c51b74f818189ff1ed917c, type: 3}
+  atterissageGlace: {fileID: 8300000, guid: f61ee8fc789331647b50b22a2c716686, type: 3}
 --- !u!114 &114520609025772102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -453,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1162e88a766e9ab4a89eec8648d6006e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerNumber: 1
   scriptMouvement: {fileID: 114520609025772102}
   personnage: {fileID: 1900575239730708}
 --- !u!114 &114853072956010416
@@ -467,7 +470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58dc58318eefc184c8135854cc2019fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerNumber: 1
   scriptMouvement: {fileID: 114520609025772102}
   personnage: {fileID: 1900575239730708}
   gameMaster: {fileID: 0}

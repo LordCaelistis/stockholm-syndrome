@@ -27,8 +27,8 @@ public class TrapBehaviour : MonoBehaviour {
 			animator.SetTrigger("close");
 
 			sourceSon.PlayOneShot(clap, 0.3f);
-			SoundStuff.PlayRandomOneShot(sourceSon, clonks ,0.05f);
-			SoundStuff.PlayRandomOneShot(sourceSon, cris ,0.1f);
+			SoundStuff.PlayRandomOneShot(sourceSon, clonks ,0.1f);
+			SoundStuff.PlayRandomOneShot(sourceSon, cris ,0.3f);
 		}
 	}
 }

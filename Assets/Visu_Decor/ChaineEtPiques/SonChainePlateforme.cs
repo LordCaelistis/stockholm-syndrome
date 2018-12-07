@@ -28,7 +28,7 @@ public class SonChainePlateforme : MonoBehaviour {
 
             if (intervalchaineNow <= 0)
             {
-                SoundStuff.PlayRandomOneShot(sourceSon, Chaine, 0.4f);
+                SoundStuff.PlayRandomOneShot(sourceSon, Chaine, 0.1f);
                 intervalchaineNow += intervalchaineMax;
             }
             else

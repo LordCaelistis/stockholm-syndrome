@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 8
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -39,6 +39,7 @@ RenderSettings:
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -54,11 +55,10 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 9
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_TextureWidth: 1024
-    m_TextureHeight: 1024
+    m_AtlasSize: 1024
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -2072,6 +2072,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114675212276208610, guid: 2e611fb6928f3421fb0354952a864956,
+        type: 2}
+      propertyPath: cris.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4787398041003698, guid: 2e611fb6928f3421fb0354952a864956, type: 2}
       propertyPath: m_LocalPosition.x
       value: -6.68
@@ -2118,6 +2123,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114675212276208610, guid: 2e611fb6928f3421fb0354952a864956,
+        type: 2}
+      propertyPath: cris.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 47052ca465f9cc448b00f1ec29ce1c10, type: 3}
+    - target: {fileID: 114675212276208610, guid: 2e611fb6928f3421fb0354952a864956,
+        type: 2}
+      propertyPath: cris.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2aaa65cbea5143d4fb8cf5e81a887cbd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e611fb6928f3421fb0354952a864956, type: 2}
   m_IsPrefabParent: 0
@@ -2401,6 +2416,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114656417073464458, guid: 074bec3ce6ea543f6812b68ee17db1a4,
+        type: 2}
+      propertyPath: cris.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4518090015649348, guid: 074bec3ce6ea543f6812b68ee17db1a4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 6.61
@@ -2447,6 +2467,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114656417073464458, guid: 074bec3ce6ea543f6812b68ee17db1a4,
+        type: 2}
+      propertyPath: cris.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 47052ca465f9cc448b00f1ec29ce1c10, type: 3}
+    - target: {fileID: 114656417073464458, guid: 074bec3ce6ea543f6812b68ee17db1a4,
+        type: 2}
+      propertyPath: cris.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2aaa65cbea5143d4fb8cf5e81a887cbd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 074bec3ce6ea543f6812b68ee17db1a4, type: 2}
   m_IsPrefabParent: 0

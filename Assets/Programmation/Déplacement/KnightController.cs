@@ -29,6 +29,7 @@ public class KnightController : MonoBehaviour {
     public AudioClip[] MassueTouche;
     public AudioClip[] ClonkArmureMarche;
     public AudioClip[] CriDeCoup;
+    public AudioClip[] cris;
 
     // GameObject:
     public Rigidbody2D player;
@@ -157,10 +158,10 @@ public class KnightController : MonoBehaviour {
             if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
             {
                 SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
-                if(solType == "Herbe")  SoundStuff.PlayRandomOneShot(sourceSon, footstepsHerbe, 0.3f);
-                if(solType == "Bois")   SoundStuff.PlayRandomOneShot(sourceSon, footstepBois,   0.3f);
-                if(solType == "Glace")  SoundStuff.PlayRandomOneShot(sourceSon, footstepGlace,  0.3f);
-                if(solType == "Pierre") SoundStuff.PlayRandomOneShot(sourceSon, footstepPierre, 0.3f);
+                if(solType == "Herbe")  SoundStuff.PlayRandomOneShot(sourceSon, footstepsHerbe, 0.25f);
+                if(solType == "Bois")   SoundStuff.PlayRandomOneShot(sourceSon, footstepBois,   0.25f);
+                if(solType == "Glace")  SoundStuff.PlayRandomOneShot(sourceSon, footstepGlace,  0.25f);
+                if(solType == "Pierre") SoundStuff.PlayRandomOneShot(sourceSon, footstepPierre, 0.25f);
 
                 intervalFootstepsNow += intervalFootstepsMax;
             }
@@ -187,6 +188,7 @@ public class KnightController : MonoBehaviour {
         if (facingRight == true && collisionMassue.GetComponent<Input_Massue>().playersToRight.Count > 0)
         {
             SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);
+            SoundStuff.PlayRandomOneShot(sourceSon, cris, 0.3f);
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToRight.Count; i++)
             {
                 print(collisionMassue.GetComponent<Input_Massue>().playersToRight[i]);
@@ -215,6 +217,7 @@ public class KnightController : MonoBehaviour {
         else if (facingRight == false && collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count > 0)
         {
             SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);
+            SoundStuff.PlayRandomOneShot(sourceSon, cris, 0.3f);
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count; i++)
             {
                 print(collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]);

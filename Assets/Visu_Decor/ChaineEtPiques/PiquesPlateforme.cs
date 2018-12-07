@@ -26,8 +26,8 @@ public class PiquesPlateforme : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll) {
 		if(coll.tag == "Player"){
 			// sourceSon.PlayOneShot(piques, 0.3f);
-			SoundStuff.PlayRandomOneShot(sourceSon, clonks ,0.05f);
-			SoundStuff.PlayRandomOneShot(sourceSon, cris ,0.1f);
+			SoundStuff.PlayRandomOneShot(sourceSon, clonks ,0.1f);
+			SoundStuff.PlayRandomOneShot(sourceSon, cris ,0.2f);
 		}
 	}
 }

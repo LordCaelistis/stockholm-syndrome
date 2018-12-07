@@ -191,8 +191,9 @@ public class KnightController : MonoBehaviour {
     {
         if (facingRight == true && collisionMassue.GetComponent<Input_Massue>().playersToRight.Count > 0)
         {
-            SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);
-            SoundStuff.PlayRandomOneShot(sourceSon, cris, 0.3f);
+
+            Invoke("PlayAudioHit", 0.3f);
+            
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToRight.Count; i++)
             {
                 foreach(GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
@@ -226,8 +227,11 @@ public class KnightController : MonoBehaviour {
 
         else if (facingRight == false && collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count > 0)
         {
-            SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);
-            SoundStuff.PlayRandomOneShot(sourceSon, cris, 0.3f);
+
+
+            Invoke("PlayAudioHit", 0.3f);
+
+            
             for (int i = 0; i < collisionMassue.GetComponent<Input_Massue>().playersToLeft.Count; i++)
             {
                 foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
@@ -296,4 +300,11 @@ public class KnightController : MonoBehaviour {
         SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
         sourceSon.PlayOneShot(MassueVent, 0.7f);
     }
+
+    void PlayAudioHit()
+    {
+        SoundStuff.PlayRandomOneShot(sourceSon, MassueTouche, 0.3f);
+        SoundStuff.PlayRandomOneShot(sourceSon, cris, 0.3f);
+    }
+
 }

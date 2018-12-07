@@ -17,12 +17,12 @@ public class JaugeBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		contenuJauge.transform.localScale = new Vector3(
-			1f,
 			Mathf.Clamp(
 				gameMaster.playerScore[player-1]/gameMaster.winningScore,
 				0f,
 				1f
 			),
+			1f,
 			1f
 		);
 	}

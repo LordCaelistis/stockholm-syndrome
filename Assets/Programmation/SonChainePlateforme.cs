@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SonChainePlateforme : MonoBehaviour {
-    
+
     public Rigidbody2D chaineBody;
 
     // Son
@@ -20,8 +20,10 @@ public class SonChainePlateforme : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        if(chaineBody.velocity.x <= -0.2f || chaineBody.velocity.y <= -0.2f)
-        {
+        if(
+            Mathf.Abs(chaineBody.velocity.x) >= 0.2f ||
+            Mathf.Abs(chaineBody.velocity.y) >= 0.2f
+        ){
 
             if (intervalchaineNow <= 0)
             {

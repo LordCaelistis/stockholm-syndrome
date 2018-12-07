@@ -14,7 +14,7 @@ public class KnightController : MonoBehaviour {
     public AudioClip[] sonsSaut;
 
     public AudioClip[] footstepsHerbe;
-    float intervalFootstepsMax = 0.3f;
+    float intervalFootstepsMax = 0.4f;
     float intervalFootstepsNow = 0f;
 
     public AudioClip[] footstepBois;
@@ -91,9 +91,11 @@ public class KnightController : MonoBehaviour {
 
         if(Input.GetButtonDown("Y_" + controllerNumber)){
             animator.SetBool("isParrying", true);
+            SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.4f);
         }
         if(Input.GetButtonUp("Y_" + controllerNumber)){
             animator.SetBool("isParrying", false);
+            SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.4f);
         }
 
 
@@ -139,8 +141,7 @@ public class KnightController : MonoBehaviour {
 
                 animator.SetTrigger("strike");
 
-                sourceSon.PlayOneShot(MassueVent, 0.7f);
-                SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
+                Invoke("playAudio", 0.3f);
                 SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
             }
         }
@@ -286,5 +287,12 @@ public class KnightController : MonoBehaviour {
             positionStartRaycastX = (player.transform.position.x) - 0.2f;
             facingRight = false;
         }
+    }
+
+    void playAudio()
+    {
+        SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
+        SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
+        sourceSon.PlayOneShot(MassueVent, 0.7f);
     }
 }

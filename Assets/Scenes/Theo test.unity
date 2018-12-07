@@ -1774,10 +1774,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1230954467068196, guid: ecd64ed0284f21243b2b52623ec1038c, type: 2}
-      propertyPath: m_TagString
-      value: Bois
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecd64ed0284f21243b2b52623ec1038c, type: 2}
   m_IsPrefabParent: 0
@@ -13127,6 +13123,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
+        type: 2}
+      propertyPath: cris.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4820934091691790, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
       propertyPath: m_LocalPosition.x
       value: -14.21
@@ -13174,6 +13175,16 @@ Prefab:
       propertyPath: gameMaster
       value: 
       objectReference: {fileID: 1426068250}
+    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
+        type: 2}
+      propertyPath: cris.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 47052ca465f9cc448b00f1ec29ce1c10, type: 3}
+    - target: {fileID: 114520609025772102, guid: b3723cfa8c3fc7c4f994dc820240a852,
+        type: 2}
+      propertyPath: cris.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2aaa65cbea5143d4fb8cf5e81a887cbd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b3723cfa8c3fc7c4f994dc820240a852, type: 2}
   m_IsPrefabParent: 0
@@ -18725,6 +18736,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 114770113718084588, guid: 73765984b6f72d641a8ec01619cdea74,
         type: 2}
+      propertyPath: CriPrince.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114770113718084588, guid: 73765984b6f72d641a8ec01619cdea74,
+        type: 2}
       propertyPath: RamassagePrince.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -18770,6 +18786,21 @@ Prefab:
       propertyPath: RamassagePrince.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 752cb2ebaf86abc4c84d5f413634d8e3, type: 3}
+    - target: {fileID: 114770113718084588, guid: 73765984b6f72d641a8ec01619cdea74,
+        type: 2}
+      propertyPath: CriPrince.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9c44ca024356efd4db762b293f635809, type: 3}
+    - target: {fileID: 114770113718084588, guid: 73765984b6f72d641a8ec01619cdea74,
+        type: 2}
+      propertyPath: CriPrince.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a2719a6637238574781e04c3d48a51c5, type: 3}
+    - target: {fileID: 114770113718084588, guid: 73765984b6f72d641a8ec01619cdea74,
+        type: 2}
+      propertyPath: CriPrince.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: ea8f21574f33b3341b9477bb538c3aed, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 73765984b6f72d641a8ec01619cdea74, type: 2}
   m_IsPrefabParent: 0

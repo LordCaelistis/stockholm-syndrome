@@ -13,6 +13,7 @@ public class PrinceBehavior : MonoBehaviour {
 
     public AudioSource sourceSonPrince;
     public AudioClip[] RamassagePrince;
+    public AudioClip[] CriPrince;
     public static bool princeCaught;
 
     // Use this for initialization
@@ -30,6 +31,8 @@ public class PrinceBehavior : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll)
     {
         SoundStuff.PlayRandomOneShot(sourceSonPrince, RamassagePrince, 0.4f);
+        SoundStuff.PlayRandomOneShot(sourceSonPrince, CriPrince, 0.4f);
+
         print(cooldown_now);
         if (cooldown_now <= 0)
         {

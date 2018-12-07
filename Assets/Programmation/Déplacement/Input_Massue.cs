@@ -6,7 +6,6 @@ public class Input_Massue : MonoBehaviour
 {
     //GameSystems Controllers
     [SerializeField]
-    public int controllerNumber = 1;
     public KnightController scriptMouvement;
     public GameObject personnage;
     public Timer gameMaster;
@@ -14,6 +13,7 @@ public class Input_Massue : MonoBehaviour
     Rigidbody2D rigid;
     public List<int> playersToLeft = new List<int>();
     public List<int> playersToRight = new List<int>();
+    int controllerNumber;
 
     // Use this for initialization
     void Start()

@@ -6,11 +6,11 @@ public class Input_Walljump : MonoBehaviour
 {
     //GameSystems Controllers
     [SerializeField]
-    public int controllerNumber = 1;
     public KnightController scriptMouvement;
     public GameObject personnage;
     Rigidbody2D rigid;
     bool againstWall;
+    int controllerNumber;
 
     // Use this for initialization
     void Start()

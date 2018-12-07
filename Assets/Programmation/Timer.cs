@@ -18,6 +18,9 @@ public class Timer : MonoBehaviour {
     private int winningPlayer;
     Rigidbody2D princeRigid;
 
+    public Image victoryPlayer1;
+    public Image victoryPlayer2;
+
     private int tempControllerNumber;
 
     // Zones text :
@@ -42,23 +45,9 @@ public class Timer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        /*if (Input.GetKeyDown("e")) {
-            print(playerArray[1] + "Fire1");
-        }
-        if (Input.GetKeyDown("r")) {
-            print(playerArray[2] + "Fire2");
-        }
-        //Quand le Player1 se prend un gnon
-        if (Input.GetKeyDown("t") && P1HasPrince)
-        {
-            Vector3 pos0 = player1.transform.position;
-            Quaternion rot0 = Quaternion.identity;
-            GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
-            princeRigid = prince0.GetComponent<Rigidbody2D>();
-            princeRigid.velocity += new Vector2(0, 8);
-            P1HasPrince = !P1HasPrince;
-        }*/
 
+        victoryPlayer1.enabled = false;
+        victoryPlayer2.enabled = false;
 
         foreach (KeyValuePair<int, bool> item in playerArray)
         {
@@ -69,20 +58,15 @@ public class Timer : MonoBehaviour {
                 winningPlayer = item.Key;
                 gameOver = true;
             }
-            //print("Key: {0}, Value: {1}" + item.Key + "" + item.Value);
         }
-        //print(playerArray.Count);
-
-        /*scoreP1 += P1HasPrince ? Time.deltaTime : 0;
-        scoreP2 += P2HasPrince ? Time.deltaTime : 0;*/
-        //print("P1 : " + playerScore[0] + " | P2 : " + playerScore[1]);
 
         // Affichage texte :
         if (textZone != null && gameOver == false){
             textZone.text = "P1 : " + playerScore[0] + " | P2 : " + playerScore[1];
         } else if (textZone != null && gameOver == true)
         {
-            textZone.text = "Player" + winningPlayer + " wins!";
+            if (winningPlayer == 1) victoryPlayer1.enabled = true;
+            if (winningPlayer == 2) victoryPlayer2.enabled = true;
         }
     }
 }

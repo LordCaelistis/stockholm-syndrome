@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class KnightController : MonoBehaviour {
 
-    private Animator animator;
-
     //GameSystems Controllers
     [SerializeField]
     public int controllerNumber = 1;
@@ -38,6 +36,7 @@ public class KnightController : MonoBehaviour {
     public Rigidbody2D princeRigid;
     public SpriteRenderer sprite;
     public GameObject collisionMassue;
+    public Animator animator;
 
     // Valeurs:
     float vitesse = 3.5f;
@@ -69,7 +68,7 @@ public class KnightController : MonoBehaviour {
         againstWall = new bool[controllerNumber + 1];
         onPlatform[controllerNumber] = false;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -81,13 +80,13 @@ public class KnightController : MonoBehaviour {
                 SoundStuff.PlayRandomOneShot(sourceSon, sonTaunt, 0.4f);
                 intervalTauntNow += intervalTauntMax;
             }
-            
+
         }
         else
         {
             intervalTauntNow -= Time.deltaTime;
         }
-        
+
 
 
         if (cooldown_now <= 0)
@@ -114,7 +113,7 @@ public class KnightController : MonoBehaviour {
                 }
                 cooldown_now += cooldown_max;
             }
-            
+
         }
         else cooldown_now -= Time.deltaTime;
 
@@ -124,21 +123,25 @@ public class KnightController : MonoBehaviour {
                 MassueStrike();
                 cooldown_now_massue += cooldown_max_massue;
 
+                animator.SetTrigger("strike");
+
                 sourceSon.PlayOneShot(MassueVent, 0.7f);
                 SoundStuff.PlayRandomOneShot(sourceSon, CriDeCoup, 0.4f);
                 SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.1f);
             }
-        }        
+        }
         else cooldown_now_massue -= Time.deltaTime;
 
         //Réduction du cooldown du mouvement aérien
         if (cooldown_now_airmove > 0)  cooldown_now_airmove -= Time.deltaTime;
         if(cooldown_now_airmove < 0) cooldown_now_airmove = 0;
-        
+
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
         if(cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0)
         {
             player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
+
+            animator.SetBool("isRunning", true);
 
             if(intervalFootstepsNow <= 0 && onPlatform[controllerNumber] == true)
             {
@@ -173,6 +176,10 @@ public class KnightController : MonoBehaviour {
             }
 
         }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
 
         // Orientation:
         UpdateFlip();
@@ -206,7 +213,7 @@ public class KnightController : MonoBehaviour {
                             princeRigid.velocity += new Vector2(0, 8);
                             Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] = false;
                         }
-                    }                    
+                    }
                 }
             }
         }

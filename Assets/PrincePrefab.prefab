@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114770113718084588}
   - component: {fileID: 61925781951998844}
   - component: {fileID: 82920130513084684}
+  - component: {fileID: 95505254416785320}
   m_Layer: 0
   m_Name: PrincePrefab
   m_TagString: prince
@@ -39,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1577558225718376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.04, y: 1.68, z: 0}
+  m_LocalPosition: {x: -12.634, y: -1.776, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,18 +78,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0445583}
+  m_Offset: {x: -0.10018206, y: -0.048565626}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 1}
+    oldSize: {x: 1.5, y: 1.69}
     newSize: {x: 0.32, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.5508834}
+  m_Size: {x: 0.8890352, y: 1.1199198}
   m_EdgeRadius: 0
 --- !u!61 &61925781951998844
 BoxCollider2D:
@@ -102,18 +103,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.04287459}
+  m_Offset: {x: -0.032058716, y: -0.046882033}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.875, y: 1}
+    oldSize: {x: 1.5, y: 1.69}
     newSize: {x: 0.32, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.55425084}
+  m_Size: {x: 0.48029137, y: 1.0110829}
   m_EdgeRadius: 0
 --- !u!82 &82920130513084684
 AudioSource:
@@ -195,6 +196,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95505254416785320
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577558225718376}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a23a91a401f9d47f6a37710e7dbb5d9a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114770113718084588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,7 +264,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c5ccec78695701e4c8b387ce40ca4454, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8b00affa437ac465da03fa77743db056, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

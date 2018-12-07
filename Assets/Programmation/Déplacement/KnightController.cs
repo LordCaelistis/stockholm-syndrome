@@ -32,6 +32,7 @@ public class KnightController : MonoBehaviour {
     public AudioClip[] cris;
 
     // GameObject:
+    public GameObject playerGameObject;
     public Rigidbody2D player;
     public GameObject PrincePrefab;
     public Rigidbody2D princeRigid;
@@ -101,7 +102,8 @@ public class KnightController : MonoBehaviour {
             if(Input.GetButtonDown("A_"+controllerNumber))
             {
                 //Saut depuis une plateforme
-                if (onPlatform[controllerNumber] == true)
+                print(playerGameObject);
+                if (playerGameObject.GetComponent<Input_Jump>().plateformCount > 0)
                 {
                     //print(getSetOnPlatform + "" + controllerNumber);
                     player.velocity += new Vector2(0, 10);

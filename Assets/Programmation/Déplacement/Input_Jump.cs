@@ -7,7 +7,7 @@ public class Input_Jump : MonoBehaviour {
     // public GameObject personnage;
     public KnightController scriptMouvement;
     bool onPlatform;
-    int plateformCount;
+    public int plateformCount;
     int controllerNumber;
 
     public AudioClip clongAtterissage;

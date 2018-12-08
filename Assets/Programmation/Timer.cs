@@ -18,6 +18,9 @@ public class Timer : MonoBehaviour {
     private int winningPlayer;
     Rigidbody2D princeRigid;
 
+    public Image VictoryPlayer1;
+    public Image VictoryPlayer2;
+
     private int tempControllerNumber;
 
     // Zones text :
@@ -27,6 +30,8 @@ public class Timer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        VictoryPlayer1.enabled = false;
+        VictoryPlayer2.enabled = false;
         if(textObject != null){
             textZone = textObject.GetComponent<Text>();
         }
@@ -68,6 +73,10 @@ public class Timer : MonoBehaviour {
             {
                 winningPlayer = item.Key;
                 gameOver = true;
+                foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
+                {
+                    Destroy(gameObject);
+                }
             }
             //print("Key: {0}, Value: {1}" + item.Key + "" + item.Value);
         }
@@ -82,7 +91,8 @@ public class Timer : MonoBehaviour {
             textZone.text = "P1 : " + playerScore[0] + " | P2 : " + playerScore[1];
         } else if (textZone != null && gameOver == true)
         {
-            textZone.text = "Player" + winningPlayer + " wins!";
+            if(winningPlayer == 1) VictoryPlayer1.enabled = true;
+            if(winningPlayer == 2) VictoryPlayer2.enabled = true;
         }
     }
 }

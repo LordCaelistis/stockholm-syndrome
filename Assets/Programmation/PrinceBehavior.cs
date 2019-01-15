@@ -32,6 +32,7 @@ public class PrinceBehavior : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        print(coll.tag);
         SoundStuff.PlayRandomOneShot(sourceSonPrince, RamassagePrince, 0.4f);
         SoundStuff.PlayRandomOneShot(sourceSonPrince, CriPrince, 0.4f);
         

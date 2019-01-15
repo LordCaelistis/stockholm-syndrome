@@ -40,6 +40,7 @@ public class KnightController : MonoBehaviour {
     public SpriteRenderer sprite;
     public GameObject collisionMassue;
     public Animator animator;
+    public GameObject gameMaster;
 
     // Valeurs:
     float vitesse = 6f;
@@ -54,8 +55,8 @@ public class KnightController : MonoBehaviour {
     // Cooldowns
     float cooldown_max = 0.1f;
     float cooldown_now = 0f;
-    float cooldown_max_airmove = 0.2f;
-    float cooldown_now_airmove = 0f;
+    public float cooldown_max_airmove = 0.2f;
+    public float cooldown_now_airmove = 0f;
     float cooldown_max_massue = 0.4f;
     float cooldown_now_massue = 0f;
     float cooldown_max_dash = 0.5f;
@@ -111,6 +112,15 @@ public class KnightController : MonoBehaviour {
             player.velocity = new Vector2(vectorDash, 0);
             Invoke("resetSpeed", 0.3f);
         }
+
+        /*if (Input.GetButtonDown("Start_" + controllerNumber) && gameMaster.GetComponent<Timer>().gameOver == true)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && gameMaster.GetComponent<Timer>().gameOver == true)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }*/
 
 
         if (cooldown_now <= 0)

@@ -8,7 +8,7 @@ public class PrinceBehavior : MonoBehaviour {
     private int tempControllerNumber;
     private GameObject player;
 
-    public float cooldown_max = 1f;
+    public float cooldown_max = 0.5f;
     public float cooldown_now = 0f;
 
     public AudioSource sourceSonPrince;
@@ -32,7 +32,6 @@ public class PrinceBehavior : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        print(coll.tag);
         SoundStuff.PlayRandomOneShot(sourceSonPrince, RamassagePrince, 0.4f);
         SoundStuff.PlayRandomOneShot(sourceSonPrince, CriPrince, 0.4f);
         
@@ -41,7 +40,6 @@ public class PrinceBehavior : MonoBehaviour {
             if (coll.tag == "Player")
             {
                 player = coll.gameObject;
-                print(coll.gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
                 gameObject.transform.parent = player.transform;
                 tempControllerNumber = coll.gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber;
                 Timer.playerDictionary[tempControllerNumber] = true;

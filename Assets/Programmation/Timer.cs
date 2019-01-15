@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Timer : MonoBehaviour {
     public GameObject player2;
     public GameObject PrincePrefab;
     public static Dictionary<int, bool> playerDictionary = new Dictionary<int, bool>();
+
     public float[] playerScore;
     public float winningScore = 3f;
     public bool gameOver = false;
@@ -38,13 +40,18 @@ public class Timer : MonoBehaviour {
             playerDictionary.Add(tempControllerNumber, false);
             playerScore[tempControllerNumber-1] = 0;
         }
-        print(playerDictionary);
+        print(playerDictionary[1]);
     }
 
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Return) && gameOver)  Application.LoadLevel(Application.loadedLevel);
+        if (Input.GetKeyDown(KeyCode.Return) && gameOver)
+        {
+            Array.Clear(playerScore, 0, playerScore.Length);
+            playerDictionary.Clear();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        }
 
         foreach (KeyValuePair<int, bool> item in playerDictionary)
         {
@@ -56,8 +63,6 @@ public class Timer : MonoBehaviour {
             {
                 winningPlayer = item.Key;
                 gameOver = true;
-                playerDictionary.Clear();
-                Array.Clear(playerScore, 0, playerScore.Length);
                 foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
                 {
                     Destroy(gameObject);

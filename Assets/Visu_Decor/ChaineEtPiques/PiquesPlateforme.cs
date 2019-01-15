@@ -41,20 +41,22 @@ public class PiquesPlateforme : MonoBehaviour
             if (coll.GetComponent<SpriteRenderer>().flipX == true) tempRigidBodyPlayer.velocity = new Vector2(-25f, -5f);
             coll.transform.GetChild(2).GetComponent<KnightController>().cooldown_now_airmove = 0.5f;
 
-            print(Timer.playerDictionary[coll.transform.GetChild(2).GetComponent<KnightController>().controllerNumber]);
+            //int tempControllerNumber = coll.transform.GetChild(2).GetComponent<KnightController>().controllerNumber;
 
-            if (Timer.playerDictionary[coll.transform.GetChild(2).GetComponent<KnightController>().controllerNumber] == true)
+            /*print(tempControllerNumber);
+            print(Timer.playerDictionary[tempControllerNumber]);
+
+            if (Timer.playerDictionary[tempControllerNumber] == true)
             {
-                PrincePrefab.AddComponent<Rigidbody2D>();
-                PrincePrefab.GetComponent<Animator>().SetBool("isCarried", false);
                 PrincePrefab.GetComponent<BoxCollider2D>().enabled = true;
-                PrincePrefab.GetComponent<PrinceBehavior>().cooldown_now += PrincePrefab.GetComponent<PrinceBehavior>().cooldown_max;
-                Vector3 pos0 = gameObject.transform.position;
-                Quaternion rot0 = Quaternion.identity;
-                //GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
+                PrincePrefab.GetComponent<PrinceBehavior>().cooldown_now = PrincePrefab.GetComponent<PrinceBehavior>().cooldown_max;
+                print(PrincePrefab.GetComponent<PrinceBehavior>().cooldown_now);
+                PrincePrefab.transform.parent = null;
+                print(PrincePrefab.transform.parent);
                 princeRigid = PrincePrefab.GetComponent<Rigidbody2D>();
                 princeRigid.velocity += new Vector2(0, 8);
-            }
+                Timer.playerDictionary[tempControllerNumber] = false;
+            }*/
 
             // sourceSon.PlayOneShot(piques, 0.3f);            
             SoundStuff.PlayRandomOneShot(sourceSon, clonks, 0.1f);

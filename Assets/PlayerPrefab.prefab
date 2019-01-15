@@ -131,7 +131,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1900575239730708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.68, y: 1.81, z: 0}
+  m_LocalPosition: {x: -14.21, y: 2.56, z: 0}
   m_LocalScale: {x: 2.2, y: 2.2, z: 1}
   m_Children:
   - {fileID: 4885301035507160}
@@ -296,54 +296,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -364,6 +379,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114459864904136684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,6 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scriptMouvement: {fileID: 114520609025772102}
+  plateformCount: 0
   clongAtterissage: {fileID: 8300000, guid: f0a20a0da7033f94688a3fc31ab78da9, type: 3}
   atterissageHerbe: {fileID: 8300000, guid: e61320442b518974b81d6c0d571ec205, type: 3}
   atterissageBois: {fileID: 8300000, guid: 34b2bbe7cffba6d48a84ab017844553a, type: 3}
@@ -437,6 +454,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0efb6c05006d04802b36313bf2603004, type: 3}
   - {fileID: 8300000, guid: 10ad10192c7344ed39d530129aae8e95, type: 3}
   - {fileID: 8300000, guid: 1ed2762822a244244ac42ced7a47efb0, type: 3}
+  cris:
+  - {fileID: 8300000, guid: 47052ca465f9cc448b00f1ec29ce1c10, type: 3}
+  - {fileID: 8300000, guid: 2aaa65cbea5143d4fb8cf5e81a887cbd, type: 3}
+  playerGameObject: {fileID: 1053718048356658}
   player: {fileID: 50631235993706700}
   PrincePrefab: {fileID: 0}
   princeRigid: {fileID: 50324674869909432, guid: 73765984b6f72d641a8ec01619cdea74,
@@ -489,6 +510,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
@@ -511,7 +533,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7aa2094fae6384415b0441daba3d43dd, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7921569, b: 0.02745098, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

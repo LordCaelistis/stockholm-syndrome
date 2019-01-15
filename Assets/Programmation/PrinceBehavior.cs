@@ -21,8 +21,6 @@ public class PrinceBehavior : MonoBehaviour {
     // Use this for initialization
     void Start () {
         cooldown_now += cooldown_max;
-        print("Coucou");
-
         animator = gameObject.GetComponent<Animator>();
     }
 
@@ -36,8 +34,7 @@ public class PrinceBehavior : MonoBehaviour {
     {
         SoundStuff.PlayRandomOneShot(sourceSonPrince, RamassagePrince, 0.4f);
         SoundStuff.PlayRandomOneShot(sourceSonPrince, CriPrince, 0.4f);
-
-        print(cooldown_now);
+        
         if (cooldown_now <= 0)
         {
             if (coll.tag == "Player")

@@ -118,10 +118,8 @@ public class KnightController : MonoBehaviour {
             if(Input.GetButtonDown("A_"+controllerNumber))
             {
                 //Saut depuis une plateforme
-                print(playerGameObject);
                 if (playerGameObject.GetComponent<Input_Jump>().plateformCount > 0)
                 {
-                    //print(getSetOnPlatform + "" + controllerNumber);
                     player.velocity += new Vector2(0, jumpHeight);
                     onPlatform[controllerNumber] = false;
 
@@ -150,7 +148,7 @@ public class KnightController : MonoBehaviour {
         //Si le coup de massue est pas en cooldown, on FRAPPE
         if (cooldown_now_massue <= 0) {
             if (Input.GetButtonDown("X_"+controllerNumber)) {
-                MassueStrike();
+                Invoke("MassueStrike", 0.3f);
                 cooldown_now_massue += cooldown_max_massue;
 
                 animator.SetTrigger("strike");
@@ -292,7 +290,6 @@ public class KnightController : MonoBehaviour {
         if(sprite.flipX == false) tempRigidBodyPlayer.velocity = new Vector2(25f, 10f);
         if (sprite.flipX == true) tempRigidBodyPlayer.velocity = new Vector2(-25f, 10f);
         gameObject.transform.GetChild(2).GetComponent<KnightController>().cooldown_now_airmove = 1f;
-        print(gameObject.transform.GetChild(2).GetComponent<KnightController>().cooldown_now_airmove);
     }
 
     // Orientation:

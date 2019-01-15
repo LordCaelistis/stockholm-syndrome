@@ -827,6 +827,9 @@ MonoBehaviour:
   playerScore: []
   winningScore: 7
   gameOver: 0
+  couronne: {fileID: 1076692817552442}
+  jaugeArgent: {fileID: 1987357011696316}
+  jaugeOr: {fileID: 1782947933113986}
   VictoryPlayer1: {fileID: 95521396933682158}
   VictoryPlayer2: {fileID: 95013829326996502}
   textObject: {fileID: 1314040974906060}
@@ -1150,7 +1153,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.000000029802}
-  m_SizeDelta: {x: 622.4, y: 399.7}
+  m_SizeDelta: {x: 1200, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224095009023418218
 RectTransform:
@@ -1228,7 +1231,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0.000000029802}
-  m_SizeDelta: {x: 622.4, y: 399.7}
+  m_SizeDelta: {x: 1200, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224477148502804822
 RectTransform:

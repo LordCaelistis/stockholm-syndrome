@@ -29,7 +29,7 @@ public class Timer : MonoBehaviour {
     void Start () {
         //VictoryPlayer1.enabled = false;
         //VictoryPlayer2.enabled = false;
-        if(textObject != null){
+        if (textObject != null){
             textZone = textObject.GetComponent<Text>();
         }
         playerScore = new float[GameObject.FindGameObjectsWithTag("Player").Length];
@@ -47,7 +47,10 @@ public class Timer : MonoBehaviour {
 
         foreach (KeyValuePair<int, bool> item in playerArray)
         {
-            if (item.Value == true) playerScore[(item.Key) - 1] += Time.deltaTime;
+            if (item.Value == true)
+            {
+                playerScore[(item.Key) - 1] += Time.deltaTime;
+            }
             // print(playerScore[(item.Key) - 1]);
             if (playerScore[(item.Key) - 1] >= winningScore)
             {
@@ -58,9 +61,7 @@ public class Timer : MonoBehaviour {
                     Destroy(gameObject);
                 }
             }
-            //print("Key: {0}, Value: {1}" + item.Key + "" + item.Value);
         }
-        //print(playerArray.Count);
 
         /*scoreP1 += P1HasPrince ? Time.deltaTime : 0;
         scoreP2 += P2HasPrince ? Time.deltaTime : 0;*/

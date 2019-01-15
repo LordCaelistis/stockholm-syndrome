@@ -103,7 +103,7 @@ public class KnightController : MonoBehaviour {
             SoundStuff.PlayRandomOneShot(sourceSon, ClonkArmureMarche, 0.4f);
         }*/
 
-        if(Input.GetButtonDown("Y_" + controllerNumber) && cooldown_now_dash <= 0 && Timer.playerArray[controllerNumber] == false)
+        if(Input.GetButtonDown("Y_" + controllerNumber) && cooldown_now_dash <= 0 && Timer.playerDictionary[controllerNumber] == false)
         {
             vitesse = 15f;
             cooldown_now_airmove += cooldown_max_airmove;
@@ -222,7 +222,7 @@ public class KnightController : MonoBehaviour {
                     }
                 }
                 //Si un des ennemis frappés possède la princesse...
-                if (Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] == true)
+                if (Timer.playerDictionary[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] == true)
                 {
                     foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
                     {
@@ -237,7 +237,7 @@ public class KnightController : MonoBehaviour {
                             //GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
                             princeRigid = PrincePrefab.GetComponent<Rigidbody2D>();
                             princeRigid.velocity += new Vector2(0, 8);
-                            Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] = false;
+                            Timer.playerDictionary[collisionMassue.GetComponent<Input_Massue>().playersToRight[i]] = false;
                         }
                     }
                 }
@@ -261,7 +261,7 @@ public class KnightController : MonoBehaviour {
                     }
                 }
                 //Si un des ennemis frappés possède la princesse...
-                if (Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] == true)
+                if (Timer.playerDictionary[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] == true)
                 {
                     foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
                     {
@@ -275,7 +275,7 @@ public class KnightController : MonoBehaviour {
                             //GameObject prince0 = (GameObject)Instantiate(PrincePrefab, pos0, rot0);
                             princeRigid = PrincePrefab.GetComponent<Rigidbody2D>();
                             princeRigid.velocity += new Vector2(0, 8);
-                            Timer.playerArray[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] = false;
+                            Timer.playerDictionary[collisionMassue.GetComponent<Input_Massue>().playersToLeft[i]] = false;
                         }
                     }
                 }

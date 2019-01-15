@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +9,7 @@ public class Timer : MonoBehaviour {
     public GameObject player1;
     public GameObject player2;
     public GameObject PrincePrefab;
-    public static Dictionary<int, bool> playerArray = new Dictionary<int, bool>();
+    public static Dictionary<int, bool> playerDictionary = new Dictionary<int, bool>();
     public float[] playerScore;
     public float winningScore = 3f;
     public bool gameOver = false;
@@ -27,8 +28,6 @@ public class Timer : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //VictoryPlayer1.enabled = false;
-        //VictoryPlayer2.enabled = false;
         if (textObject != null){
             textZone = textObject.GetComponent<Text>();
         }
@@ -36,36 +35,35 @@ public class Timer : MonoBehaviour {
         foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
         {
             tempControllerNumber = gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber;
-            playerArray.Add(tempControllerNumber, false);
+            playerDictionary.Add(tempControllerNumber, false);
             playerScore[tempControllerNumber-1] = 0;
         }
-        print(playerArray);
+        print(playerDictionary);
     }
 
 	// Update is called once per frame
 	void Update () {
 
-        foreach (KeyValuePair<int, bool> item in playerArray)
+        if (Input.GetKeyDown(KeyCode.Return) && gameOver)  Application.LoadLevel(Application.loadedLevel);
+
+        foreach (KeyValuePair<int, bool> item in playerDictionary)
         {
             if (item.Value == true)
             {
                 playerScore[(item.Key) - 1] += Time.deltaTime;
             }
-            // print(playerScore[(item.Key) - 1]);
             if (playerScore[(item.Key) - 1] >= winningScore)
             {
                 winningPlayer = item.Key;
                 gameOver = true;
+                playerDictionary.Clear();
+                Array.Clear(playerScore, 0, playerScore.Length);
                 foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Player"))
                 {
                     Destroy(gameObject);
                 }
             }
         }
-
-        /*scoreP1 += P1HasPrince ? Time.deltaTime : 0;
-        scoreP2 += P2HasPrince ? Time.deltaTime : 0;*/
-        //print("P1 : " + playerScore[0] + " | P2 : " + playerScore[1]);
 
         // Affichage texte :
         if (textZone != null && gameOver == false){

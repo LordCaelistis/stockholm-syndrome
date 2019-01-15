@@ -43,7 +43,7 @@ public class PrinceBehavior : MonoBehaviour {
                 print(coll.gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber);
                 gameObject.transform.parent = player.transform;
                 tempControllerNumber = coll.gameObject.transform.GetChild(2).GetComponent<KnightController>().controllerNumber;
-                Timer.playerArray[tempControllerNumber] = true;
+                Timer.playerDictionary[tempControllerNumber] = true;
                 transform.localPosition = new Vector3(0, 0.5f, 0);
                 Destroy(GetComponent<Rigidbody2D>());
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;

@@ -23,7 +23,7 @@ GameObject:
   m_Layer: 0
   m_Name: Musique
   m_TagString: Untagged
-  m_Icon: {fileID: 6926474624037801865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -260,9 +260,9 @@ GameObject:
   - component: {fileID: 124670622785237874}
   - component: {fileID: 81130987069828686}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main_Camera
   m_TagString: MainCamera
-  m_Icon: {fileID: 6926474624037801865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -827,11 +827,8 @@ MonoBehaviour:
   playerScore: []
   winningScore: 7
   gameOver: 0
-  couronne: {fileID: 1076692817552442}
-  jaugeArgent: {fileID: 1987357011696316}
-  jaugeOr: {fileID: 1782947933113986}
-  VictoryPlayer1: {fileID: 95521396933682158}
-  VictoryPlayer2: {fileID: 95013829326996502}
+  victoryPlayer1: {fileID: 0}
+  victoryPlayer2: {fileID: 0}
   textObject: {fileID: 1314040974906060}
 --- !u!114 &114701787839966068
 MonoBehaviour:

@@ -43,7 +43,7 @@ public class KnightController : MonoBehaviour {
     public GameObject gameMaster;
 
     // Valeurs:
-    float vitesse = 6f;
+    float vitesse = 9f;
     public bool[] onPlatform;
     public bool[] againstWall;
     public bool facingRight;

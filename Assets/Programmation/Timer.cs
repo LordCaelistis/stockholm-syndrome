@@ -18,6 +18,7 @@ public class Timer : MonoBehaviour {
     private int winningPlayer = 0;
     Rigidbody2D princeRigid;
 
+    public GameObject Restart;
     public Animator VictoryPlayer1;
     public Animator VictoryPlayer2;
 
@@ -46,7 +47,7 @@ public class Timer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Return) && gameOver)
+        if (Input.GetButtonDown("Submit") && gameOver)
         {
             Array.Clear(playerScore, 0, playerScore.Length);
             playerDictionary.Clear();
@@ -77,6 +78,8 @@ public class Timer : MonoBehaviour {
         {
             if(winningPlayer == 1) VictoryPlayer1.SetFloat("VictoryTrigger", 1f);
             if(winningPlayer == 2) VictoryPlayer2.SetFloat("VictoryTrigger2", 1f);
+            if (winningPlayer == 1) Restart.SetActive(true);
+            if (winningPlayer == 2) Restart.SetActive(true);
         }
     }
 }

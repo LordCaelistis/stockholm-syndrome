@@ -43,13 +43,13 @@ public class KnightController : MonoBehaviour {
     public GameObject gameMaster;
 
     // Valeurs:
-    float vitesse = 9f;
+    float vitesse = 11f;
     public bool[] onPlatform;
     public bool[] againstWall;
     public bool facingRight;
 
     //Valeurs déplacement
-    float jumpHeight = 12f;
+    float jumpHeight = 13f;
     float vectorDash = 500f;
 
     // Cooldowns
@@ -178,7 +178,7 @@ public class KnightController : MonoBehaviour {
         // Déplacement (seulement si le déplacement n'est pas en cooldown):
         if (cooldown_now_airmove <= 0f && Input.GetAxis("L_XAxis_" + controllerNumber)!=0)
         {
-            player.velocity += new Vector2(Input.GetAxis("L_XAxis_"+controllerNumber), 0);
+            player.velocity += new Vector2(Input.GetAxis("L_XAxis_" + controllerNumber), 0);
 
             animator.SetBool("isRunning", true);
 
@@ -212,7 +212,7 @@ public class KnightController : MonoBehaviour {
 
     void resetSpeed()
     {
-        vitesse = 6f;
+        vitesse = 9f;
     }
 
     void MassueStrike()

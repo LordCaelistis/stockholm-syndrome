@@ -76,8 +76,8 @@ public class Timer : MonoBehaviour {
             textZone.text = "P1 : " + playerScore[0] + " | P2 : " + playerScore[1];
         } else if (textZone != null && gameOver == true)
         {
-            if(winningPlayer == 1) VictoryPlayer1.SetFloat("VictoryTrigger", 1f);
-            if(winningPlayer == 2) VictoryPlayer2.SetFloat("VictoryTrigger2", 1f);
+            if(winningPlayer == 1) VictoryPlayer1.SetFloat("VictoryTrigger2", 1f);
+            if(winningPlayer == 2) VictoryPlayer2.SetFloat("VictoryTrigger", 1f);
             if (winningPlayer == 1) Restart.SetActive(true);
             if (winningPlayer == 2) Restart.SetActive(true);
         }
